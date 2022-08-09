@@ -30,9 +30,9 @@ html, body {
 	color: black;
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.brand {
-		font-size: 35px;
+		font-size: 25px;
 	}
 }
 
@@ -97,22 +97,21 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.block_one {
 		height: 710px;
 	}
 	.block_one_items {
-		padding-top: 50px;
+		padding-top: 60px;
 	}
 	.block_one h2 {
-		font-size: 70px;
+		font-size: 66px;
 	}
 	.block_one h3 {
-		font-size: 25px;
+		font-size: 24px;
 	}
 	.item_2 {
-		margin-top: -20px;
-		margin-bottom: 50px;
+		margin: -20px 10px 50px;
 	}
 }
 
@@ -164,7 +163,10 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
+	.block_in_air {
+		display: none;
+	}
 	.air_block {
 	display: none;
 	}
@@ -205,9 +207,9 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.block_two {
-		margin: 0;
+		margin: 50px 0 0;
 	}
 	.block_two h1 {
 		margin: 0 10px;
@@ -248,7 +250,7 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.image_1, .image_2 {
 		/*width: 400px;*/
 		width: 100%;
@@ -307,7 +309,7 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.digital_privacy, .encryption, .devices {
 		margin-right: 40px;
 		margin-left: 40px;
@@ -328,7 +330,7 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.block_five {
 		margin-bottom: 50px;
 	}
@@ -348,7 +350,7 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.unique, .choose {
 		margin: 0 10px;
 	}
@@ -399,7 +401,7 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.features {
 		flex-direction: column;
 		align-items: center;
@@ -515,7 +517,7 @@ html, body {
 	}
 }
 
-@media (max-width: 568px) {
+@media (max-width: 480px) {
 	.plan_1, .plan_2, .plan_3 {
 		width: 90%;
 		height: 260px;
