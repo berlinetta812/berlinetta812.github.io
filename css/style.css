@@ -88,6 +88,12 @@ html, body {
 	width: 280px;
 }
 
+@media (min-width: 1920px) {
+	.block_one {
+		height: 970px;
+	}
+}
+
 @media (max-width: 768px) {
 	.block_one_items {
 		padding-top: 120px;
