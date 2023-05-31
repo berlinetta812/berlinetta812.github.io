@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Вход</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <meta name="theme-color" content="#08a652">
+
+        <link rel="icon" href="/img/favicon.ico">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header></header>
+            <main class="main_login">
+                <div class="login_container">
+                    <div class="login_form">
+                        <h1>Вход в личный кабинет</h1>
+                        <form class="user_login" action="/login" method="POST">
+                            <label for="username">Логин:</label>
+                            <div><input class="username" type="text" id="username" name="username" required></div>
+                        
+                            <label class="pwd" for="password">Пароль:</label>
+                            <div><input class="password" type="password" id="password" name="password" required></div>
+                        
+                            <div><input class="login_button" type="submit" value="Войти"></div>
+                            <div class="new_user"><p>Новый пользователь?  <a href="registration.html"> Создайте аккаунт</a></p></div>
+                          </form>
+                    </div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+    </body>
+</html>
