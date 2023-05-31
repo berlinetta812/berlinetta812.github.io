@@ -286,7 +286,7 @@ li {
 .n2_advantage {
     display: flex;
     justify-content: space-evenly;
-    font-size: 14px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     font-family: 'Open Sans', sans-serif;
@@ -317,6 +317,11 @@ li {
 
     .n2_b {
         margin-bottom: 20px;
+	width: 90%;
+        max-width: 500px;
+    }
+	.n2_b img {
+        width: 85px;
     }
 }
 
