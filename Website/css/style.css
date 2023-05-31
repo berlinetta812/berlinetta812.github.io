@@ -837,6 +837,9 @@ li {
     .n2, .n3, .n4, .n5, .n6, .n7 {
         margin-top: 50px;
     }
+	.n2 h2, .n3 h2, .n4 h2, .n5 h2, .n6 h2, .n7 h2 {
+        font-size: 34px;
+    }
 }
 
 /*=====*/
