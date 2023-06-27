@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>ФинансЮг - Вклады по ставке до 15% годовых</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500&display=swap" rel="stylesheet">
+        <meta name="description" content="This is demo info of description">
+        <meta name="keywords" content="вклад, накопительный счет, процент по вкладам, выгодные вклады в банках, выгодные вклады, банковские сбережения, открыть накопительный счет">
+        <meta property="og:title" content="ФинансЮг - Вклады по ставке до 15% годовых">
+        <meta property="og:description" content="This is demo info of description">
+        <meta property="og:image" content="image.jpg">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://websitre.ru">
+        <meta name="theme-color" content="#08a652">
+        <meta name="format-detection" content="telephone=no">
+
+        <link rel="icon" href="/img/favicon.ico">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <div class="h_img"><img src="img/logo2.svg"><div>ФинансЮг</div></div>
+                <nav>
+                    <ul class="menu">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="#asset">Вклады</a></li>
+                        <li><a href="loans.html">Займы</a></li>
+                        <li><a href="#footer">Контакты</a></li>
+                        <li><span><a href="login.php">Личный Кабинет</a></span></li>
+                    </ul>
+                </nav>
+
+                <div class="header_contaner">
+                    <div class="menu_burger">
+                        <span></span>
+                    </div>
+                    <nav class="burger_nav">
+                        <ul class="burger_list">
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="#asset">Вклады</a></li>
+                            <li><a href="loans.html">Займы</a></li>
+                            <li><a href="#footer">Контакты</a></li>
+                            <li><span><a href="login.php">Личный Кабинет</a></span></li>
+                        </ul>
+                    </nav>
+                    <div class="logo"><img src="img/logo2.svg"><div>ФинансЮг</div></div>
+                </div>
+
+            </header>
+
+            <main class="main">
+                <section class="n1">
+                    <div class="n1_content">
+                        <div class="n1_text">
+                            <div class="n1_t">Вклады с доходностью до <span>15% годовых!</span></div>
+                            <div class="n1_buttons">
+                                <a href="#calc" class="button_anchor"><button>Рассчитать доходность</button></a>
+                            </div>
+                        </div>
+                        <div class="n1_img"><img src="img/man.svg"></div>
+                    </div>
+                </section>
+
+                <section class="n2">
+                        <div><h2>О нас</h2></div>
+                            <div class="n2_prev">
+                                <div class="n2_pr">
+                                    <p>КПК "ФинансЮг" - некомерчесская кредитная организация, оказывающая финансовые услуги с 2012 года в соответствии с требованиями Центрального Банка РФ.</p>
+                                </div>
+                            </div>
+                        <div><h2>Наши преимущества</h2></div>
+                        <div class="n2_advantage">
+                            <div class="n2_b">
+                                <img src="img/graphic-business-and-finance-svgrepo-com.svg">
+                                <p>Высокая доходность</p>
+                            </div>
+                            <div class="n2_b">
+                                <img src="img/calendar.svg">
+                                <p>Ежедневные начисления</p>
+                            </div>
+                            <div class="n2_b">
+                                <img src="img/percentage.svg">
+                                <p>Капитализация процентов</p>
+                            </div>
+                            <div class="n2_b">
+                                <img src="img/24-hours.svg">
+                                <p>Снятие вклада в любое время</p>
+                            </div>
+                        </div>
+                </section>
+
+                <section class="n3">
+                    <div><a name="calc"><h2>Калькулятор доходности</h2></a></div>
+                    <div class="calc">
+                        <div class="calc_content">
+                            <div class="start_block">
+                                <span>Вклад, в рублях</span>
+                                <div><input type="number" id="asset-input" class="title__inline" min="10000" max="10000000" value="100000"></div>
+                                <div class="range"><input type="range" id="asset_range" class="range_input" min="10000" max="10000000" value="100000" step="1000"></div>
+                            </div>
+                            <div class="percent_block">
+                                <span>Процентная ставка в год:</span>
+                                <div><input type="number" id="inputPercent" class="input_percent" placeholder="Введите %" min="7" max="15" required="true" value="7"></div>
+                                <div class="range"><input type="range" id="percent_range" class="range_input" min="7" max="15" value="1" step="1"></div>
+                            </div>
+                            <div class="time_depo">
+                                <span>Срок депозита, месяц</span>
+                                <div><input type="number" id="month-input" class="input_month" min="3" max="36" value="3"></div>
+                                <div class="range"><input type="range" id="month-range" class="range_input" min="3" max="36" value="1" step="1"></div>
+                            </div>
+                            <div class="total">
+                                <div class="t1"><span>Итоговая сумма вклада:</span></div>
+                                <div><span id="total_assets" class="amount">0</span><span>руб.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="n3_b"><a href="registration.php" class="button_anchor"><button>Открыть счет онлайн</button></a></div>
+                </section>
+
+                <section class="n4">
+                    <div><h2>Гарантии</h2></div>
+                    <div class="n4_g">
+                        <div class="n4_cont">
+                            <div>
+                                <img src="img/bank.svg">
+                                <p class="hn4">Под надзором Центрального Банка РФ</p>
+                                <p>«ФинансЮг» внесен в официальный реестр ЦБ РФ</p>
+                            </div>
+                        </div>
+                        <div class="n4_cont">
+                            <div>
+                                <img src="img/safe.svg">
+                                <p class="hn4">Строгий риск-менеджмент </p>
+                                <p>«ФинансЮг» тщательно соблюдает финансовые нормативы, установленные ЦБ РФ</p>
+                            </div>
+                        </div>
+                        <div class="n4_cont">
+                            <div>
+                                <img src="img/insured.svg">
+                                <p class="hn4">Вклады застрахованы</p>
+                                <p>«ФинансЮг» является действующим членом СРО «НОКК». Ежемесячно вносит средства в компенсационный фонд</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="n5">
+                    <div><h2>Как начать работу?</h2></div>
+                    <div class="n5_c">
+                        <div class="n5_steps">
+                            <div class="steps">
+                                <div class="st_ct">
+                                    <p><span>1. </span>Зарегистрируйтесь</p>
+                                    <p><span>2. </span>Пополните счет</p>
+                                    <p><span>3. </span>Получайте доход</p>
+                                    <div class="n5_b"><a href="registration.php" class="button_anchor"><button>Открыть счет онлайн</button></a></div>                                 
+                                </div>
+                            </div>
+                            <div class="n5_img"><img src="img/steps.jpg"></div>
+                        </div>
+                     </div>
+                </section>
+
+                <section class="n6">
+                    <div><a name="asset"><h2>Все вклады</h2></a></div>
+                    <div class="n6_p">
+                        <div class="assets">
+                            <div>Лучший %</div>
+                            <p><span>Доходность:</span> 15% годовых</p>
+                            <p><span>Срок:</span> от 3 до 36 месяцев</p>
+                            <p><span>Выплата процентов:</span> ежемесячно</p>
+                            <p><span>Минимальная сумма:</span> 5 000 ₽ </p>
+                            <p><span>Капитализация %:</span> есть</p>
+                        </div>
+                        <div class="assets"> 
+                            <div>Хорошее начало</div>
+                            <p><span>Доходность:</span> 9% годовых</p>
+                            <p><span>Срок:</span> от 3 до 36 месяцев</p>
+                            <p><span>Выплата процентов:</span> ежемесячно</p>
+                            <p><span>Минимальная сумма:</span> 5 000 ₽ </p>
+                            <p><span>Капитализация %:</span> отсутствует</p>
+                        </div>
+                        <div class="assets">
+                            <div>Управляй</div>
+                            <p><span>Доходность:</span> 7% годовых</p>
+                            <p><span>Срок:</span> от 3 до 36 месяцев</p>
+                            <p><span>Выплата процентов:</span> ежемесячно</p>
+                            <p><span>Минимальная сумма:</span> 5 000 ₽ </p>
+                            <p><span>Капитализация %:</span> отсутствует</p>
+                        </div>
+                    </div>
+                    <div class="n6_b"><a href="registration.php" class="button_anchor"><button>Открыть счет онлайн</button></a></div>
+                </section>
+                <section class="n7">
+                    <div class="n7_h"><h2>Остались вопросы?</h2></div>
+                    <div class="n7_h"><p>Заполните заявку и мы свяжемся с вами</p></div>
+                    <div class="n7_f">
+                        <div class="n7_cont">
+                            <form  class="n7_form" action="/submit" method="POST">
+                            <label for="name">Имя:</label>
+                            <input class="name_form" type="text" id="name" name="name" required>
+                        
+                            <label class="phone_label" for="phone">Телефон:</label>
+                            <input  class="tel" type="tel" id="phone" name="phone" required>
+                        
+                            <div class="n7_input"><input class="n7_button" type="submit" value="Отправить"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <a name="footer"><footer class="footer"></a>
+                <div class="f_items">
+                    <div class="f_menu">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="#asset">Вклады</a></li>
+                        <li><a href="loans.html">Займы</a></li>
+                        <li><a href="#footer">Контакты</a></li>
+                        <li><a href="terms.html">Условия</a></li>
+                    </div>
+                    <div class="contacts">
+                        <p>КПК "ФинансЮг"</p>
+                        <p>ИНН: 1655217870</p>
+                        <p>ОГРН: 1111690047391</p>
+                        <p class="address">Адрес: г. Ростов-на-Дону, ул. Благодатная, д. 247, офис 104</p>
+                    </div>
+                </div>
+                <div class="rights"><p>© 2012—2023, КПК «ФинансЮг», официальный сайт, лицензия ЦБ РФ от 21.02.2012</p></div>
+            </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="js/menu.js"></script>
+        <script src="js/calc.js"></script>
+    </body>
+</html>
