@@ -4,7 +4,7 @@ mb_internal_encoding("UTF-8");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Проверка reCAPTCHA
-    $recaptcha_secret = '6LfMrmApAAAAAJ5ptZXoUs6n-LxAhdy7If2Up-SW';
+    $recaptcha_secret = '6LfPIGEpAAAAAHeZBbtYHX9fIY-F_hrS8rFmDUtD';
     $recaptcha_response = $_POST['g-recaptcha-response'];
 
     $url = "https://www.google.com/recaptcha/api/siteverify?secret={$recaptcha_secret}&response={$recaptcha_response}";
