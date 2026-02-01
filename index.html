@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Обязательные мета-теги. Необходимо добавить остальные! -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Название страницы (до 60 символов) -->
+  <title>Финансовая организация | Онлайн-займы и вклады</title>
+  
+  <!-- Описание для SEO (до 160 символов) -->
+  <meta name="description" content="Получите онлайн-займ или откройте вклад на выгодных условиях. Одобрение за 5 минут. Лицензия ЦБ РФ.">
+  
+  <!-- Иконки -->
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  
+  <!-- Основные CSS -->
+  <link rel="stylesheet" href="assets/css/style.css"> <!-- Основные стили -->
+  
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <!-- Каноническая ссылка для SEO -->
+  <link rel="canonical" href="https://вашсайт.ru">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="/" class="logo">
+        <img src="assets/svg/" alt="logo" width="44px" height="44px" loading="eager">
+        </a>
+      </div>
+
+     <nav class="mobile-nav" aria-hidden="true">
+        <ul class="mobile-nav__list">
+          <li><a href="/">Займы</a></li>
+          <li><a href="/invest">Вклады</a></li>
+          <li><a href="/about">О нас</a></li>
+          <li><a href="/contacts">Контакты</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons">
+          <!--<button type="button" class="btn btn-login"><span>Войти</span></button>-->
+          <button type="button" class="btn btn-burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+          </button> 
+      </div>
+    </div>
+  </header>
+  <div class="menu-overlay"></div>
+
+  <!-- Основное содержимое
+   "Commissioner","Segoe UI","Gerbera",Helvetica,Arial,sans-serif -->
+  <main class="main">
+    <section class="hero" id="loans">
+      <div class="hero_container">
+        <header class="hero-offer">
+        <h1 class="hero-title">
+          Нужная сумма под&nbsp;0%
+        </h1>
+        <p class="hero-subtitle">При условии<button type="button" class="hero-text-link" aria-controls="late-info-sheet" aria-expanded="false">возврата в срок</button></p>        
+        </header>
+
+        <div class="hero-accent" aria-hidden="true">
+          <img
+            src="assets/img/1.png"alt="zero_percent"loading="eager">
+        </div>
+      
+        <div class="hero-cta">
+        <button type="button" class="btn-primary" data-action="open-telegram">Получить деньги</button>
+        </div>
+
+        <div class="calculator-card" role="group" aria-label="Калькулятор займа">
+          <div class="calculator-row calculator-row--top">
+            <span class="calculator-label">Выберите сумму</span>
+            <span class="calculator-value"><span id="loan-amount">13 500</span> ₽</span>
+          </div>
+
+          <div class="calculator-row calculator-row--range">
+            <input
+              type="range"
+              id="loan-range"
+              min="2000"
+              max="30000"
+              step="500"
+              value="13500"
+              aria-label="Выбор суммы займа"/>
+
+            <div class="calculator-range-limits">
+              <span>2 000 ₽</span>
+              <span>30 000 ₽</span>
+            </div>
+          </div>
+
+          <div class="calculator-row calculator-row--bottom">
+            <span class="calculator-label">К возврату</span>
+            <span class="calculator-return">
+              <span class="calculator-return-old">
+                <span id="return-old">16 740</span> ₽
+              </span>
+              <span class="calculator-return-new">
+                <span id="return-new">13 500</span> ₽
+              </span>
+            </span>
+          </div>
+
+          <div class="hero-secondary">
+            <button type="button" class="btn-link" data-action="open-late-info" aria-controls="late-info-sheet" aria-expanded="false">А если я не успею вернуть вовремя?</button>
+          </div>
+        </div> 
+      </div>
+    </section>
+    
+    <section id="about" class="about">
+      <div class="container">
+        <div class="glass-block">
+          <h2 class="section-title">Как получить деньги</h2>
+
+          <ol class="steps">
+            <li class="step">
+              <div class="step-icon" aria-hidden="true"><img src="assets/img/doc.png" alt="docs" loading="eager" width="70px" height="70px"></div>
+              <h3 class="step-title">Авторизируйтесь в официальном боте в Telegram</h3>
+            </li>
+
+            <li class="step">
+              <div class="step-icon" aria-hidden="true"><img src="assets/img/coin.png" alt="coin" loading="eager" width="70px" height="70px"></div>
+              <h3 class="step-title">Выберите нужную сумму</h3>
+            </li>
+
+            <li class="step">
+              <div class="step-icon" aria-hidden="true"><img src="assets/img/card.png" alt="card" loading="eager" width="70px" height="70px"></div>
+              <h3 class="step-title">Получите деньги на карту любого банка</h3>
+            </li>
+          </ol>
+        </div>
+
+        <div class="glass-block">
+          <h2 class="section-title">РКС — финансовый сервис, доступный каждому</h2>
+          <div class="features-slider" aria-label="Преимущества" role="region">
+            <ul class="features features--slider">
+              <li class="feature">
+                <h3 class="feature-title">Паспорт не нужен</h3>
+                <p class="feature-text">Авторизация через ЕСИА — безопасно и удобно. Никаких селфи с паспортом и долгих проверок.</p>
+              </li>
+
+              <li class="feature">
+                <h3 class="feature-title">Работаем официально</h3>
+                <p class="feature-text">Компания состоит в реестре ЦБ РФ и работает в соответствии с законодательством.</p>
+              </li>
+
+              <li class="feature">
+                <h3 class="feature-title">Одобряем более 80% заявок</h3>
+                <p class="feature-text">Решаем задачи клиентов с разным уровнем дохода.</p>
+              </li>
+
+              <li class="feature">
+                <h3 class="feature-title">Работаем 24/7</h3>
+                <p class="feature-text">Выдаём деньги, когда они нужны именно сейчас.</p>
+              </li>
+
+              <li class="feature">
+                <h3 class="feature-title">Моментально переводим</h3>
+                <p class="feature-text">Средства уже на карте после заключения договора.</p>
+              </li>
+
+              <li class="feature">
+                <h3 class="feature-title">Заботимся о каждом клиенте</h3>
+                <p class="feature-text">Первая сумма — бесплатно, дальше выгодные условия, акции и скидки.</p>
+              </li>
+            </ul>
+            <div class="features-dots" aria-hidden="true">
+              <span class="dot is-active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div> 
+        </div>
+
+        <div class="glass-block">
+          <h2 class="section-title">Что нужно для оформления</h2>
+
+          <ul class="requirements">
+            <li class="req">
+              <div class="req-icon" aria-hidden="true"><img src="assets/img/phone.png" alt="phone" loading="eager" width="50px" height="50px"></div>
+              <h3 class="req-title">Мобильный телефон</h3>
+            </li>
+
+            <li class="req">
+              <div class="req-icon" aria-hidden="true"><img src="assets/img/wallet.png" alt="wallet" loading="eager" width="50px" height="50px"></div>
+              <h3 class="req-title">Карта любого банка</h3>
+            </li>
+
+            <li class="req">
+              <div class="req-icon" aria-hidden="true"><img src="assets/img/18.png" alt="age" loading="eager" width="50px" height="50px"></div>
+              <h3 class="req-title">Возраст от 18 до 65 лет</h3>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="glass-block">
+          <h2 class="section-title">Частые вопросы</h2>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как получить деньги?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Авторизируйтесь в официальном Telegram боте при помощи ЕСИА Госуслуги, прикрепите номер карты и введите необходимую сумму.<br>После подписания договора простой электронной подписью (SMS код) вы автоматически получайте одобренную сумму на карту.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как быстро придут деньги?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Суммы 50 000 ₽ зачисляются сразу после подписания договора.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как оплатить?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Внести платеж можно в любой день путем оплаты с банковской карты в личном кабинете в официальном Telegram-боте.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Что будет, если я не успею вернуть вовремя?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Перенос даты платежа возможен в личном кабинете в официальном Telegram-боте при оплате начисленных процентов за дни пользования займом. Продления срока осуществляется путем подписания дополнительного соглашения простой электронной подписью (SMS код).</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как связаться с поддержкой?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Для решения иных вопросов, связанных с пользованием нашим сервисом, вы можете воспользоваться любым удобным для вас каналом связи круглосуточно.</p>
+                
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- Подвал сайта -->
+  <footer class="footer" id="contacts">
+      <div class="footer-grid">
+        <p class="footer-note">*Новым клиентам: до&nbsp;30&nbsp;000&nbsp;₽ на&nbsp;срок до&nbsp;30&nbsp;дней (ПСК 0—292%) под&nbsp;0% при условии возврата в&nbsp;срок</p>
+        <ul class="footer-links">
+          <li><a href="/about">О компании</a></li>
+          <li><a href="/docs">Документы</a></li>
+          <li><a href="/contacts">Контакты</a></li>
+          <li><a href="/invest">Инвестировать</a></li>
+        </ul>
+        <ul class="footer-social" aria-label="Социальные сети">
+          <li><a href="#" aria-label="Telegram" class="social-btn"><img src="assets/svg/tg.svg" alt="open-telegram" loading="eager" width="30px" height="30px"></a></li>
+          <li><a href="#" aria-label="MAX" class="social-btn"><img src="assets/svg/max.svg" alt="open-max" loading="eager" width="30px" height="30px"></a></li>
+          <li><a href="#" aria-label="WhatsApp" class="social-btn"><img src="assets/svg/w.svg" alt="open-whatsapp" loading="eager" width="30px" height="30px"></a></li>
+        </ul>
+        <p class="footer-info">Связаться со Службой поддержки можно круглосуточно с помощью официальных чатов в Telegram, Max, WhatsApp или по электронной почте support@domain.com</p>
+        <p class="footer-info">Рег. номер записи в реестре КПК:<br>00000000 от XX.XX.2026</p>
+        <p class="footer-info">ИНН: 61XXXXXXXX<br>ОГРН: 00000000000000</p>
+        <div class="footer-reg">
+          <p>Банк России: <a href="https://cbr.ru" target="_blank" rel="noopener nofollow">https://cbr.ru</a><br>Интернет-приёмная Банка России: <a href="https://cbr.ru/Reception" target="_blank" rel="noopener nofollow">https://cbr.ru/Reception</a></p>
+        </div>
+      </div>
+  </footer>
+  <div class="sheet-overlay" data-sheet-overlay aria-hidden="true"></div>
+
+  <section class="bottom-sheet" id="late-info-sheet" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bottom-sheet__handle" aria-hidden="true"></div>
+
+    <h3 class="bottom-sheet__title">Если не успеете вернуть вовремя</h3>
+    <p class="bottom-sheet__text">Перенесите дату платежа, продлив срок займа в личном кабинете в официальном Telegram-боте</p>
+
+    <button type="button" class="bottom-sheet__close" data-sheet-close>Понятно</button>
+  </section>
+
+  <!-- Скрипты -->
+  <script src="assets/js/main.js" defer></script>
+  
+  <script>
+    // Здесь может быть код Яндекс.Метрики или Google Analytics
+  </script>
+</body>
+</html>
