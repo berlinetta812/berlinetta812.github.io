@@ -63,7 +63,7 @@
         <h1 class="hero-title">
           Нужная сумма под&nbsp;0%
         </h1>
-        <p class="hero-subtitle">При условии<button type="button" class="hero-text-link" aria-controls="late-info-sheet" aria-expanded="false">возврата в срок</button></p>        
+        <p class="hero-subtitle">При условии<button type="button" class="hero-text-link"data-sheet-target="terms-info-sheet" aria-controls="terms-info-sheet" aria-expanded="false">возврата в срок</button></p>        
         </header>
 
         <div class="hero-accent" aria-hidden="true">
@@ -110,7 +110,7 @@
           </div>
 
           <div class="hero-secondary">
-            <button type="button" class="btn-link" data-action="open-late-info" aria-controls="late-info-sheet" aria-expanded="false">А если я не успею вернуть вовремя?</button>
+            <button type="button" class="btn-link" data-action="open-late-info" data-sheet-target="late-info-sheet" aria-controls="late-info-sheet" aria-expanded="false">А если я не успею вернуть вовремя?</button>
           </div>
         </div> 
       </div>
@@ -260,15 +260,12 @@
               </summary>
               <div class="faq-a">
                 <p>Для решения иных вопросов, связанных с пользованием нашим сервисом, вы можете воспользоваться любым удобным для вас каналом связи круглосуточно.</p>
-                
               </div>
             </details>
           </div>
         </div>
       </div>
     </section>
-
-
   </main>
 
   <!-- Подвал сайта -->
@@ -292,6 +289,7 @@
         <div class="footer-reg">
           <p>Банк России: <a href="https://cbr.ru" target="_blank" rel="noopener nofollow">https://cbr.ru</a><br>Интернет-приёмная Банка России: <a href="https://cbr.ru/Reception" target="_blank" rel="noopener nofollow">https://cbr.ru/Reception</a></p>
         </div>
+        <div class="footer-end"><p class="footer-info">КПК "РКС", 2026</p></div>
       </div>
   </footer>
   <div class="sheet-overlay" data-sheet-overlay aria-hidden="true"></div>
@@ -304,6 +302,25 @@
 
     <button type="button" class="bottom-sheet__close" data-sheet-close>Понятно</button>
   </section>
+  <section class="bottom-sheet" id="terms-info-sheet" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="bottom-sheet__handle" aria-hidden="true"></div>
+
+  <h3 class="bottom-sheet__title">Условия возврата в срок</h3>
+  <p class="bottom-sheet__text">
+    Для новых клиентов: до 30 000 ₽ под 0% до 30 дней.
+    При просрочке или пролонгации начисляются проценты.
+  </p>
+
+  <button type="button" class="bottom-sheet__close" data-sheet-close>Понятно</button>
+</section>
+
+  <div class="sticky-cta" aria-hidden="true">
+    <div class="sticky-cta__inner">
+      <button type="button" class="btn-primary" data-action="open-telegram">
+        Получить деньги
+      </button>
+    </div>
+  </div>
 
   <!-- Скрипты -->
   <script src="assets/js/main.js" defer></script>
