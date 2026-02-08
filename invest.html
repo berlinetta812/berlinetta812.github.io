@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Обязательные мета-теги. Необходимо добавить остальные! -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Название страницы (до 60 символов) -->
+  <title>КПК "Ростовские кредитные системы" | Сбережения</title>
+  
+  <!-- Описание для SEO (до 160 символов) -->
+  <meta name="description" content="Сбережения с доходностью до 30% годовых">
+  
+  <!-- Иконки -->
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  
+  <!-- Основные CSS -->
+  <link rel="stylesheet" href="assets/css/style.css"> <!-- Основные стили -->
+  
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <!-- Каноническая ссылка для SEO -->
+  <link rel="canonical" href="https://вашсайт.ru">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="/" class="logo">
+        <img src="assets/svg/" alt="logo" width="44px" height="44px" loading="eager">
+        </a>
+      </div>
+
+     <nav class="mobile-nav" aria-hidden="true">
+        <ul class="mobile-nav__list">
+          <li><a href="index.html">Займы</a></li>
+          <li><a href="invest.html">Вклады</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+      
+      <div class="auth-buttons">
+          <button type="button" class="btn btn-login"><span>Войти</span></button>
+          <button type="button" class="btn btn-burger" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+          </button> 
+      </div>
+    </div>
+  </header>
+  <div class="menu-overlay"></div>
+
+  <!-- Основное содержимое
+   "Commissioner","Segoe UI","Gerbera",Helvetica,Arial,sans-serif -->
+  <main class="main">
+    <section class="hero" id="invest">
+        <div class="hero_container">
+            <div class="hero-offer">
+                <h1 class="hero-title">Сбережения c доходностью 30% годовых</h1>
+                <p class="hero-subtitle">Выбирайте индивидуальные условия с максимальной выгодой</p>
+            </div>
+
+            <button class="btn-primary" type="button" data-action="open-account">Открыть счёт</button>
+
+            <div class="hero-accent"><img src="assets/img/hero2.png" alt="" loading="eager"></div>
+            
+<div class="calculator-card deposit-card" role="group" aria-label="Калькулятор вклада">
+    <div class="calculator-row calculator-row--title">
+    <span class="deposit-title">Калькулятор сбережений</span>
+    </div>
+    <!-- Срок -->
+  <div class="calculator-row calculator-row--top">
+    <span class="calculator-label">Срок вклада</span>
+    <span class="calculator-value"><span id="dep-term">6</span> мес</span>
+  </div>
+
+  <div class="calculator-row calculator-row--range">
+    <input type="range" id="dep-term-range" min="1" max="12" step="1" value="6" aria-label="Срок вклада (мес)">
+    <div class="dep-ticks" aria-hidden="true">
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+      <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+    </div>
+  </div>
+
+  <!-- Сумма -->
+  <div class="calculator-row">
+    <span class="calculator-label">Сумма вклада</span>
+    <span class="calculator-value"><span id="dep-amount-ui">100 000</span> ₽</span>
+  </div>
+
+  <div class="calculator-row calculator-row--range">
+    <input type="range" id="dep-amount-range" min="50000" max="30000000" step="10000" value="100000" aria-label="Сумма вклада">
+    <div class="calculator-range-limits">
+      <span>50 000 ₽</span>
+      <span>30 000 000 ₽</span>
+    </div>
+  </div>
+
+  <!-- Пополняемый -->
+  <div class="calculator-row">
+    <label class="dep-check">
+      <input type="checkbox" id="dep-topup">
+      <span>Пополняемый счет</span>
+    </label>
+  </div>
+
+  <!-- Результаты -->
+  <div class="calculator-row">
+    <span class="calculator-label">Ставка</span>
+    <span class="calculator-value">
+      <span id="dep-rate">30.00</span>%
+      <span class="dep-rate-old" id="dep-rate-old" aria-hidden="true"></span>
+    </span>
+  </div>
+
+  <div class="calculator-row">
+    <span class="calculator-label">Доходность</span>
+    <span class="calculator-value"><span id="dep-yield">0</span> ₽</span>
+  </div>
+
+  <div class="calculator-row calculator-row--bottom">
+    <span class="calculator-label">Сумма в конце срока</span>
+    <span class="calculator-value">
+      <span id="dep-total">0</span> ₽
+      <span class="dep-delta" id="dep-delta"></span>
+    </span>
+  </div>
+</div>        
+        
+        
+        
+        
+        </div>
+    </section>
+
+
+
+
+
+
+    
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="glass-block">
+          <h2 class="section-title">Частые вопросы</h2>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Какие условия сбережений в КПК "РКС"?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Срок от 1 до 12 месяцев.<br>Максимальная ставка: 30%.<br>Рассчитать точную ставку можно воспользовавшись калькулятором на этой странице.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как открыть сберегательный счет в КПК "РКС"?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Открыть счет можно онлайн.<br>1. Пройдите регистрацию на сайте КПК "РКС".<br>2. В личном кабинете выберите подходящие условия и нажмите "Открыть счет".<br>3. В разделе "Сберегательный " нажмите пополнить. Минимальная сумма 30 000 руб.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как начисляются проценты?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Мы начисляем проценты каждый месяц - баланс удобно проверять в личном кабинете на сайте КПК "РКС".<br>Проценты капитализируются, таким образом обеспечивается более высокая доходность, особенно на длительном сроке.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Может ли измениться ставка моих сбережений?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Если вы открыли сберегательный счет и пополнили его на минимальную сумму, то процентная ставка фиксируется на весь срок.<br>В случае досрочного снятия денежных средств доходность будет рассчитана в размере 0,01% годовых.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Мои сбережения застрахованы?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Ответственность КПК "РСК" по обязательствам застрахована.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Какую минимальную сумму можно положить на сберегательный счет?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Минимальная сумма - 30 000 руб.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span>Как связаться с поддержкой?</span>
+                <span class="faq-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                <p>Для решения иных вопросов, связанных с пользованием нашим сервисом, вы можете воспользоваться любым удобным для вас каналом связи круглосуточно.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал сайта -->
+  <footer class="footer" id="contacts">
+      <div class="footer-grid">
+        <!--<p class="footer-note">*Новым клиентам: до&nbsp;30&nbsp;000&nbsp;₽ на&nbsp;срок до&nbsp;30&nbsp;дней (ПСК 0—292%) под&nbsp;0% при условии возврата в&nbsp;срок</p>-->
+        <ul class="footer-links">
+          <li><a href="about.html">О компании</a></li>
+          <li><a href="docs.html">Документы</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="index.html">Займы</a></li>
+        </ul>
+        <ul class="footer-social" aria-label="Социальные сети">
+          <li><a href="#" aria-label="Telegram" class="social-btn"><img src="assets/svg/tg.svg" alt="open-telegram" loading="eager" width="30px" height="30px"></a></li>
+          <li><a href="#" aria-label="MAX" class="social-btn"><img src="assets/svg/max.svg" alt="open-max" loading="eager" width="30px" height="30px"></a></li>
+          <li><a href="#" aria-label="WhatsApp" class="social-btn"><img src="assets/svg/w.svg" alt="open-whatsapp" loading="eager" width="30px" height="30px"></a></li>
+        </ul>
+        <p class="footer-info">Связаться со Службой поддержки можно круглосуточно с помощью официальных чатов в Telegram, Max, WhatsApp или по электронной почте support@domain.com</p>
+        <p class="footer-info">Рег. номер записи в реестре КПК:<br>00000000 от XX.XX.2026</p>
+        <p class="footer-info">ИНН: 61XXXXXXXX<br>ОГРН: 00000000000000</p>
+        <div class="footer-reg">
+          <p>Банк России: <a href="https://cbr.ru" target="_blank" rel="noopener nofollow">https://cbr.ru</a><br>Интернет-приёмная Банка России: <a href="https://cbr.ru/Reception" target="_blank" rel="noopener nofollow">https://cbr.ru/Reception</a></p>
+        </div>
+        <div class="footer-end"><p class="footer-info">КПК "РКС", 2026</p></div>
+      </div>
+  </footer>
+  <div class="sheet-overlay" data-sheet-overlay aria-hidden="true"></div>
+
+  <!-- Скрипты -->
+  <script src="assets/js/main.js" defer></script>
+  
+  <script>
+    // Здесь может быть код Яндекс.Метрики или Google Analytics
+  </script>
+</body>
+</html>
