@@ -616,7 +616,7 @@ body.sheet-open .sheet-overlay{
 }
 
 .glass-block{
-  margin: 30px 0 15px;
+  margin: 20px 0 10px;
   padding: 16px 16px 14px;
 
   border-radius: 18px;
@@ -1218,6 +1218,10 @@ body.sheet-open .sticky-cta{
   font-variant-numeric: tabular-nums;
 }
 
+#dep-term {
+  margin-right: 4px;
+}
+
 /* ===== Open account steps (invest) ===== */
 .open-steps{
   padding: 0 16px 0;
@@ -1268,4 +1272,21 @@ body.sheet-open .sticky-cta{
   color: rgba(17,17,17,0.70);
   font-size: 0.95rem;
   line-height: 1.35;
+}
+
+.topup-steps {
+  padding: 0 16px 0;
+  margin: 20px 0 10px;
+  background: rgb(246, 246, 247);
+}
+
+.topup-steps-img {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.topup-steps-img img {
+  width: 100%;
+  border-radius: 14px;
 }
