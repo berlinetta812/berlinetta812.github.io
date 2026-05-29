@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
   
   <!-- Название страницы (до 60 символов) -->
   <title>Р-Финанс | Сбережения</title>
@@ -38,7 +39,7 @@
      <nav class="mobile-nav" aria-hidden="true">
         <ul class="mobile-nav__list">
           <li><a href="index.html">Займы</a></li>
-          <li><a href="invest.html">Вклады</a></li>
+          <li><a href="invest.html">Сбережения</a></li>
           <li><a href="about.html">О нас</a></li>
           <li><a href="contacts.html">Контакты</a></li>
         </ul>
@@ -87,18 +88,36 @@
             </div>
 
             <!-- Сумма -->
-            <div class="calculator-row">
-              <span class="calculator-label">Сумма вклада</span>
-              <span class="calculator-value"><span id="dep-amount-ui">100 000</span> ₽</span>
-            </div>
+            <div class="dep-amount-control">
+              <label class="dep-amount-label" for="dep-amount-input">Сумма вклада</label>
 
-            <div class="calculator-row calculator-row--range">
-              <input type="range" id="dep-amount-range" min="50000" max="30000000" step="50000" value="100000" aria-label="Сумма вклада">
-              <div class="calculator-range-limits">
-                <span>50 000 ₽</span>
-                <span>30 000 000 ₽</span>
+              <div class="dep-amount-field">
+                <input
+                  type="text"
+                  id="dep-amount-input"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  value="100 000 ₽"
+                  aria-label="Сумма вклада"
+                >
+              </div>
+
+              <input
+                type="range"
+                id="dep-amount-range"
+                min="50000"
+                max="30000000"
+                step="50000"
+                value="100000"
+                aria-label="Регулировка суммы вклада"
+              >
+
+              <div class="calculator-range-limits dep-amount-limits">
+                <span>50 000</span>
+                <span>30 000 000</span>
               </div>
             </div>
+
 
             <!-- Пополняемый -->
             <div class="calculator-row">
@@ -109,25 +128,45 @@
             </div>
 
             <!-- Результаты -->
-            <div class="calculator-row">
-              <span class="calculator-label">Ставка</span>
-              <span class="calculator-value">
-                <span id="dep-rate">30.00</span>%
+            <div class="dep-results">
+              <div class="dep-results__rate">
+                <span class="dep-results__rate-label">Ставка</span>
+                <span class="dep-results__rate-value">
+                  <span id="dep-rate">30.00</span>%
+                </span>
                 <span class="dep-rate-old" id="dep-rate-old" aria-hidden="true"></span>
-              </span>
-            </div>
+              </div>
 
-            <div class="calculator-row">
-              <span class="calculator-label">Доходность</span>
-              <span class="calculator-value"><span id="dep-yield">0</span> ₽</span>
-            </div>
+              <div class="dep-results__item">
+                <div class="dep-results__icon" aria-hidden="true">
+                  <img src="assets/svg/income.svg" alt="">
+                </div>
 
-            <div class="calculator-row calculator-row--bottom">
-              <span class="calculator-label">Сумма в конце срока</span>
-              <span class="calculator-value">
-                <span id="dep-total">0</span> ₽
-                <span class="dep-delta" id="dep-delta"></span>
-              </span>
+                <div class="dep-results__content">
+                  <div class="dep-results__value">
+                    <span id="dep-yield">0</span> ₽
+                  </div>
+                  <div class="dep-results__label">
+                    Доходность
+                  </div>
+                </div>
+              </div>
+
+              <div class="dep-results__item">
+                <div class="dep-results__icon" aria-hidden="true">
+                  <img src="assets/svg/total.svg" alt="">
+                </div>
+
+                <div class="dep-results__content">
+                  <div class="dep-results__value">
+                    <span id="dep-total">0</span> ₽
+                    <span class="dep-delta" id="dep-delta"></span>
+                  </div>
+                  <div class="dep-results__label">
+                    Сумма в конце срока
+                  </div>
+                </div>
+              </div>
             </div>
           </div>         
         </div>
@@ -181,12 +220,12 @@
 
               <li class="feature">
                 <h3 class="feature-title">Управляйте онлайн</h3>
-                <p class="feature-text">В личном кабинете на сайте</p>
+                <p class="feature-text">В личном кабинете на сайте 24/7</p>
               </li>
 
               <li class="feature">
                 <h3 class="feature-title">На связи 24/7</h3>
-                <p class="feature-text"></p>
+                <p class="feature-text">Поддержка ответит на любой ваш вопрос</p>
               </li>
             </ul>
             <div class="features-dots" aria-hidden="true">
@@ -199,11 +238,38 @@
         </div>
     </section>
 
-    <section class="topup-steps">
-      <div class="topup-steps-img"><img src="assets/img/safe3.png"></div>
+    <section class="topup-banner" aria-label="Пополнение счета">
+      <div class="topup-banner__inner">
+        <img src="assets/img/atm.png" alt="Пополнение счета через банкомат" loading="lazy">
+      </div>
     </section>
 
-  <!--Картинка+способы пополнения-->
+    <section class="topup-steps">
+      <div class="glass-block">
+        <h2 class="section-title">Пополняйте как удобно</h2>
+        <div class="topup-methods">
+          <article class="topup-method">
+            <img class="topup-method__icon" src="assets/svg/transfer.svg" alt="" aria-hidden="true">
+            <h3 class="topup-method__title">Перевод с дебетовой карты</h3>
+            <p class="topup-method__text">Зачисление - моментально и без комиссии. Пополняйте на сайте в личном кабинете</p>
+            
+          </article>
+
+          <article class="topup-method">
+            <img class="topup-method__icon" src="assets/svg/card.svg" alt="" aria-hidden="true">
+            <h3 class="topup-method__title">Банковский перевод по реквизитам</h3>
+            <p class="topup-method__text">Реквизиты для перевода - на сайте в личном кабинете</p>
+          </article>
+
+          <article class="topup-method topup-method--light">
+            <img class="topup-method__icon" src="assets/svg/atm.svg" alt="" aria-hidden="true">
+            <h3 class="topup-method__title">Пополнение наличными</h3>
+            <p class="topup-method__text">В офисе Р-Финанс - быстро и надежно</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="faq" class="faq">
       <div class="container">
         <div class="glass-block">
