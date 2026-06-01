@@ -648,7 +648,7 @@ body.sheet-open .sheet-overlay{
   position: relative;
   z-index: 1;
 
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: rgba(17,17,17,0.92);
