@@ -159,28 +159,6 @@ if (featuresTrack && dots.length) {
   });
 }
 
-// ===== Sticky CTA (появляется когда основная CTA исчезает) =====
-const mainCtaBtn = document.querySelector('.hero-cta');
-const stickyCta = document.querySelector('.sticky-cta');
-
-if (mainCtaBtn && stickyCta) {
-  const setStickyVisible = (visible) => {
-    document.body.classList.toggle('sticky-cta-visible', visible);
-    stickyCta.setAttribute('aria-hidden', visible ? 'false' : 'true');
-  };
-
-  const updateSticky = () => {
-    const rect = mainCtaBtn.getBoundingClientRect();
-    setStickyVisible(rect.bottom < 80);
-  };
-
-  setStickyVisible(false);
-  updateSticky();
-
-  window.addEventListener('scroll', updateSticky, { passive: true });
-  window.addEventListener('resize', updateSticky);
-}
-
 // ===== Deposit calculator (invest) =====
 (function initDepositCalc(){
   const termRange = document.getElementById('dep-term-range');
