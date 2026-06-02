@@ -166,6 +166,8 @@ body.menu-open {
   padding: 0 16px;
   font-weight: 600;
   background: rgb(234, 235, 237);
+  text-decoration: none;
+  color: rgb(17, 17, 17);
 }
 
 .btn-burger {
@@ -307,20 +309,20 @@ body.menu-open .menu-overlay {
 .btn-primary {
   width: 100%;
   padding: 14px 16px;
-
   border-radius: var(--radius-md);
   border: 1px solid var(--glass-border);
-
   background: rgb(57, 59, 244);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-
   color: rgb(255, 255, 255);
   font-size: 1rem;
   font-weight: 600;
-
   box-shadow: var(--glass-shadow);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .calculator-card{
