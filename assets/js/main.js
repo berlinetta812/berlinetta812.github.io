@@ -160,7 +160,7 @@ if (featuresTrack && dots.length) {
 }
 
 // ===== Sticky CTA (появляется когда основная CTA исчезает) =====
-const mainCtaBtn = document.querySelector('.hero .btn-primary[data-action="open-telegram"]');
+const mainCtaBtn = document.querySelector('.hero-cta');
 const stickyCta = document.querySelector('.sticky-cta');
 
 if (mainCtaBtn && stickyCta) {
@@ -169,22 +169,16 @@ if (mainCtaBtn && stickyCta) {
     stickyCta.setAttribute('aria-hidden', visible ? 'false' : 'true');
   };
 
-  // По умолчанию скрыта
+  const updateSticky = () => {
+    const rect = mainCtaBtn.getBoundingClientRect();
+    setStickyVisible(rect.bottom < 80);
+  };
+
   setStickyVisible(false);
+  updateSticky();
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      // Если основная кнопка НЕ видна — показываем нижнюю
-      setStickyVisible(!entry.isIntersecting);
-    },
-    {
-      root: null,
-      // небольшая “зона”, чтобы нижняя кнопка появлялась чуть раньше/позже — можно подстроить
-      threshold: 0.1,
-    }
-  );
-
-  observer.observe(mainCtaBtn);
+  window.addEventListener('scroll', updateSticky, { passive: true });
+  window.addEventListener('resize', updateSticky);
 }
 
 // ===== Deposit calculator (invest) =====
