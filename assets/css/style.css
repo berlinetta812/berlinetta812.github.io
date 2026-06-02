@@ -950,35 +950,6 @@ body.sheet-open .sheet-overlay{
   to{ opacity: 1; transform: translateY(0); }
 }
 
-.sticky-cta{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: calc(16px + env(safe-area-inset-bottom));
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-  transform: translateY(140%);
-  transition: transform .28s ease;
-  z-index: 140;
-}
-
-.sticky-cta__inner{
-  max-width: 480px;
-  width: 100%;
-  padding: 0 16px;
-  pointer-events: auto;
-}
-
-body.sticky-cta-visible .sticky-cta{
-  transform: translateY(0);
-}
-
-body.menu-open .sticky-cta,
-body.sheet-open .sticky-cta{
-  transform: translateY(140%);
-}
-
 /* ===== Footer: grey, not glass ===== */
 .footer{
   background: rgb(41, 41, 41);
@@ -1489,6 +1460,7 @@ body.sheet-open .sticky-cta{
   -webkit-backdrop-filter: none;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 0;
 }
 
 .topup-steps__panel::before {
@@ -1499,6 +1471,7 @@ body.sheet-open .sticky-cta{
   text-align: center;
   padding-left: 0;
   padding-right: 0;
+  margin-bottom: 20px;
 }
 
 .about-company {
