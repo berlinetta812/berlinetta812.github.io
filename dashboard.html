@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Обязательные мета-теги. Необходимо добавить остальные! -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- Название страницы (до 60 символов) -->
+  <title>Личный кабинет</title>
+  
+  <!-- Описание для SEO (до 160 символов) -->
+  <meta name="description" content="">
+  
+  <!-- Иконки -->
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <!-- Каноническая ссылка для SEO -->
+  <link rel="canonical" href="https://вашсайт.ru">
+</head>
+
+<body class="dashboard-body">
+  <header class="header dashboard-header">
+  <div class="container_header">
+    <div class="header_logo">
+      <a href="index.html" class="logo">
+        <img src="assets/svg/logo.svg" alt="logo" width="44" height="44" loading="eager">
+      </a>
+    </div>
+
+    <div class="auth-buttons">
+      <button type="button" class="btn btn-burger dashboard-burger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+  </header>
+
+  <div class="dashboard-overlay" hidden></div>
+
+  <aside class="dashboard-menu" aria-hidden="true">
+    <div class="dashboard-menu__top">
+      <div class="dashboard-user">
+        <div>
+          <p class="dashboard-user__name" data-user-name>Пользователь</p>
+          <p class="dashboard-user__status" data-user-status>Неподтвержденная учетная запись</p>
+        </div>
+      </div>
+
+      <button class="dashboard-menu__close" type="button" aria-label="Закрыть меню"></button>
+    </div>
+
+    <div class="dashboard-menu__contacts">
+      <a href="tel:+78002009109" class="dashboard-contact-card">
+        <span class="dashboard-contact-card__icon">☎</span>
+        <span>
+          <strong>8 (800) 200-91-09</strong>
+          <small>Бесплатный звонок по России</small>
+        </span>
+      </a>
+
+      <a href="mailto:support@domain.com" class="dashboard-contact-card">
+        <span class="dashboard-contact-card__icon">@</span>
+        <span>
+          <strong>support@domain.com</strong>
+          <small>Для вопросов и предложений</small>
+        </span>
+      </a>
+    </div>
+
+    <ul class="dashboard-social" aria-label="Социальные сети">
+      <li><a href="#" aria-label="Telegram"><img src="assets/svg/tg.svg" alt="" width="30" height="30"></a></li>
+      <li><a href="#" aria-label="MAX"><img src="assets/svg/max.svg" alt="" width="30" height="30"></a></li>
+      <li><a href="#" aria-label="WhatsApp"><img src="assets/svg/w.svg" alt="" width="30" height="30"></a></li>
+    </ul>
+
+    <button class="dashboard-logout" type="button">
+      <span>Выйти</span>
+      <span class="dashboard-logout__icon">↗</span>
+    </button>
+  </aside>
+
+  <main class="dashboard-main">
+    <section class="dashboard-verify" data-verify-card>
+      <div>
+        <h1>Подтвердите личность</h1>
+        <p>Для оформления займа нужно подтвердить учетную запись через ЕСИА. Сберегательный счет доступен без подтверждения.</p>
+      </div>
+      <a href="#" class="dashboard-verify__button">Подтвердить</a>
+    </section>
+
+    <section class="dashboard-products">
+      <h2 class="dashboard-title">Мои продукты</h2>
+
+      <div class="dashboard-product-group">
+        <h3 class="dashboard-subtitle">Займы</h3>
+
+        <article class="dashboard-product-card is-locked" data-loan-card>
+          <div>
+            <p class="dashboard-product-card__title" data-loan-title>Активных займов нет</p>
+            <p class="dashboard-product-card__text" data-loan-text>Доступно до 100 000 ₽</p>
+            <span class="dashboard-product-card__badge">Нужна верификация</span>
+          </div>
+          <span class="dashboard-product-card__arrow">›</span>
+        </article>
+      </div>
+
+      <div class="dashboard-product-group">
+        <h3 class="dashboard-subtitle">Сбережения</h3>
+
+        <a href="#" class="dashboard-product-card" data-savings-card>
+          <div>
+            <p class="dashboard-product-card__title" data-savings-title>Нет открытых счетов</p>
+            <p class="dashboard-product-card__text" data-savings-text>Открыть сберегательный счет</p>
+          </div>
+          <span class="dashboard-product-card__arrow">›</span>
+        </a>
+      </div>
+    </section>
+    <section class="dashboard-new-product">
+      <a href="products.html" class="dashboard-new-product__button">
+        Новый продукт
+      </a>
+    </section>
+  </main>
+
+  <script src="assets/js/dashboard.js" defer></script>
+</body>
+</html>

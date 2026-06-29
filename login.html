@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Обязательные мета-теги. Необходимо добавить остальные! -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- Название страницы (до 60 символов) -->
+  <title>Вход или регистрация | Р-Финанс</title>
+  
+  <!-- Описание для SEO (до 160 символов) -->
+  <meta name="description" content="Вход или регистрация в личном кабинете Р-Финанс по номеру телефона.">
+  
+  <!-- Иконки -->
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  
+  <!-- Основные CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <!-- Каноническая ссылка для SEO -->
+  <link rel="canonical" href="https://вашсайт.ru">
+</head>
+
+<body class="auth-body">
+  <header class="auth-header">
+    <div class="auth-header__inner">
+      <a href="index.html" class="auth-logo" aria-label="На главную">
+        <img src="assets/svg/logo.svg" alt="Р-Финанс" width="44" height="44">
+      </a>
+      <a href="index.html" class="auth-close" aria-label="Закрыть страницу входа"></a>
+    </div>
+  </header>
+
+  <main class="auth-main">
+    <section class="auth-section" aria-labelledby="auth-title">
+      <div class="auth-container">
+        <div class="auth-copy">
+          <h1 class="auth-title" id="auth-title">Личный кабинет</h1>
+          <p class="auth-subtitle">Введите номер телефона — мы отправим код подтверждения</p>
+        </div>
+
+        <form class="auth-form" id="phone-form" novalidate>
+          <div class="auth-field" id="phone-field">
+            <label class="auth-label" for="auth-phone">Телефон</label>
+            <input
+              class="auth-input"
+              type="tel"
+              id="auth-phone"
+              name="phone"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+7 (___) ___-__-__"
+              maxlength="18"
+              aria-describedby="phone-error"
+              aria-invalid="false"
+            >
+          </div>
+
+          <p class="auth-error" id="phone-error" role="alert" hidden>
+            Введите номер телефона полностью
+          </p>
+
+          <button class="auth-submit" type="submit">Продолжить</button>
+        </form>
+
+        <p class="auth-legal">
+          Продолжая, вы соглашаетесь с
+          <a href="privacy.html">политикой обработки персональных данных</a>
+        </p>
+        <div class="auth-code-step" id="code-step" hidden>
+        <div class="auth-copy">
+            <h2 class="auth-title">Введите код</h2>
+            <p class="auth-subtitle">
+            Отправили код подтверждения на номер
+            <strong id="code-phone"></strong>
+            </p>
+        </div>
+
+        <form class="auth-form" id="code-form" novalidate>
+            <div class="auth-field auth-code-field" id="code-field">
+            <label class="auth-label" for="auth-code">Код</label>
+            <input
+                class="auth-input auth-code-input"
+                type="password"
+                id="auth-code"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                maxlength="6"
+                aria-describedby="code-error"
+                aria-invalid="false"
+            >
+            </div>
+
+    <p class="auth-error auth-code-error" id="code-error" role="alert" hidden>
+      Проверьте код — он неправильный
+    </p>
+  </form>
+
+  <button class="auth-resend" id="resend-code" type="button" disabled>
+    Отправим код повторно через 40 сек
+  </button>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/auth.js" defer></script>
+</body>
+</html>
