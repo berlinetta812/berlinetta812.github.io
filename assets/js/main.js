@@ -10,13 +10,32 @@ window.addEventListener('orientationchange', updateViewportHeight);
 const burgerBtn = document.querySelector('.btn-burger');
 const mobileNav = document.querySelector('.mobile-nav');
 
+let menuScrollPosition = 0;
+
+function lockPageScroll() {
+  menuScrollPosition = window.scrollY;
+  document.body.style.top = `-${menuScrollPosition}px`;
+  document.body.classList.add('menu-open');
+}
+
+function unlockPageScroll() {
+  document.body.classList.remove('menu-open');
+  document.body.style.removeProperty('top');
+  window.scrollTo(0, menuScrollPosition);
+}
+
 if (burgerBtn && mobileNav) {
   burgerBtn.addEventListener('click', () => {
     const isOpen = burgerBtn.classList.toggle('menu-open');
 
     burgerBtn.setAttribute('aria-expanded', isOpen);
     mobileNav.setAttribute('aria-hidden', !isOpen);
-    document.body.classList.toggle('menu-open', isOpen);
+
+    if (isOpen) {
+      lockPageScroll();
+    } else {
+      unlockPageScroll();
+    }
   });
 }
 
@@ -27,7 +46,7 @@ if (overlay && burgerBtn) {
     burgerBtn.classList.remove('menu-open');
     burgerBtn.setAttribute('aria-expanded', false);
 
-    document.body.classList.remove('menu-open');
+    unlockPageScroll();
     mobileNav.setAttribute('aria-hidden', true);
   });
 }

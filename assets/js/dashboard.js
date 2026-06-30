@@ -29,6 +29,7 @@ const loanText = document.querySelector('[data-loan-text]');
 
 const savingsTitle = document.querySelector('[data-savings-title]');
 const savingsText = document.querySelector('[data-savings-text]');
+let menuScrollPosition = 0;
 
 function formatRussianPhone(value) {
   const digits = String(value).replace(/\D/g, '').slice(0, 11);
@@ -39,15 +40,27 @@ function formatRussianPhone(value) {
   return `+7 (${local.slice(0, 3)}) ${local.slice(3, 6)}-${local.slice(6, 8)}-${local.slice(8, 10)}`;
 }
 
-function openMenu() {
+function lockPageScroll() {
+  menuScrollPosition = window.scrollY;
+  body.style.top = `-${menuScrollPosition}px`;
   body.classList.add('menu-open');
+}
+
+function unlockPageScroll() {
+  body.classList.remove('menu-open');
+  body.style.removeProperty('top');
+  window.scrollTo(0, menuScrollPosition);
+}
+
+function openMenu() {
+  lockPageScroll();
   overlay.hidden = false;
   burgerButton.setAttribute('aria-expanded', 'true');
   document.querySelector('.dashboard-menu').setAttribute('aria-hidden', 'false');
 }
 
 function closeMenu() {
-  body.classList.remove('menu-open');
+  unlockPageScroll();
   overlay.hidden = true;
   burgerButton.setAttribute('aria-expanded', 'false');
   document.querySelector('.dashboard-menu').setAttribute('aria-hidden', 'true');
