@@ -28,6 +28,7 @@ html {
   min-width: 320px;
   width: 100%;
   overflow-x: hidden;
+  background: rgb(254, 254, 254);
 }
 
 body {
@@ -49,7 +50,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(254, 254, 254);
+  background: rgb(254, 254, 254);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   min-height: 59px;
@@ -84,7 +85,7 @@ body {
 
   padding: 72px 16px 24px; /* место под header */
 
-  background: rgba(254, 254, 254);
+  background: rgb(254, 254, 254);
   backdrop-filter: none;
 
   box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
@@ -131,6 +132,10 @@ body.menu-open .mobile-nav {
 }
 
 body.menu-open {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
   overflow: hidden;
 }
 

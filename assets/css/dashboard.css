@@ -22,7 +22,10 @@
   transition: transform 0.25s ease;
   height: 100vh;
   height: 100dvh;
-  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  padding:
+    calc(28px + env(safe-area-inset-top))
+    18px
+    calc(24px + env(safe-area-inset-bottom));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
