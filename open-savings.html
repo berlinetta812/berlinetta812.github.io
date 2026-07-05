@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Открытие сберегательного счета</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img
+            src="assets/svg/logo.svg"
+            alt="Р-Финанс"
+            width="44"
+            height="44"
+          >
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main savings-open-main">
+    <a href="products.html" class="savings-back">‹ Назад</a>
+
+    <form class="savings-form" data-savings-form>
+      <h1 class="savings-title">
+        Открытие счета
+      </h1>
+
+      <section class="savings-amount-card">
+        <label for="savings-amount">
+          Сумма сбережений, ₽
+        </label>
+
+        <input
+          id="savings-amount"
+          type="text"
+          inputmode="numeric"
+          value="50 000"
+          autocomplete="off"
+          data-savings-amount
+        >
+
+        <input
+          class="savings-range"
+          type="range"
+          min="50000"
+          max="30000000"
+          step="10000"
+          value="50000"
+          aria-label="Сумма сбережений"
+          data-savings-range
+        >
+
+        <div class="savings-range-limits">
+          <span>50 тыс. ₽</span>
+          <span>30 млн ₽</span>
+        </div>
+      </section>
+
+      <section class="savings-calculator">
+        <h2>Прогноз доходности</h2>
+
+        <div class="savings-term-card">
+          <label for="savings-term">
+            Срок размещения
+          </label>
+
+          <output for="savings-term" data-savings-term-output>
+            12 месяцев
+          </output>
+
+          <input
+            id="savings-term"
+            class="savings-range"
+            type="range"
+            min="1"
+            max="12"
+            step="1"
+            value="12"
+            aria-label="Срок размещения"
+            data-savings-term
+          >
+        </div>
+
+        <div class="savings-range-limits">
+          <span>1 месяц</span>
+          <span>12 месяцев</span>
+        </div>
+
+        <div class="savings-calculation-result">
+          <p>
+            <span>Доход составит</span>
+            <strong data-savings-income>15 000 ₽</strong>
+          </p>
+
+          <p>
+            <span>Ставка</span>
+            <strong data-savings-rate>30%</strong>
+          </p>
+        </div>
+      </section>
+
+      <section class="savings-conditions">
+        <h2>Условия счета</h2>
+
+        <ul>
+          <li>
+            Срок договора —
+            <span data-condition-term>12 месяцев</span>
+          </li>
+
+          <li>Ежемесячная капитализация, выплата в конце срока</li>
+          <li>Без снятия до окончания срока</li>
+          <li>Ставка фиксируется после первого пополнения</li>
+        </ul>
+      </section>
+
+      <label class="savings-consent">
+        <input type="checkbox" data-savings-consent>
+
+        <span>
+          Открывая счет, я соглашаюсь с
+          <a
+            href="assets/docs/individual-terms.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            индивидуальными условиями
+          </a>
+        </span>
+      </label>
+
+      <button
+        class="savings-submit"
+        type="submit"
+        disabled
+        data-savings-submit
+      >
+        Открыть счет
+      </button>
+    </form>
+  </main>
+
+  <script src="assets/js/savings-calculator.js" defer></script>
+  <script src="assets/js/product-flow.js" defer></script>
+</body>
+</html>

@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Обязательные мета-теги. Необходимо добавить остальные! -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="format-detection" content="telephone=no">
   
-  <!-- Название страницы (до 60 символов) -->
   <title>Личный кабинет</title>
-  
-  <!-- Описание для SEO (до 160 символов) -->
-  <meta name="description" content="">
-  
-  <!-- Иконки -->
-  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
   
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -93,10 +90,20 @@
   </aside>
 
   <main class="dashboard-main">
+    <section
+      class="dashboard-notice"
+      data-dashboard-notice
+      role="status"
+      hidden
+    >
+      <h1 data-dashboard-notice-title>Операция выполнена</h1>
+      <p data-dashboard-notice-text></p>
+    </section>
+
     <section class="dashboard-verify" data-verify-card>
       <div>
         <h1>Подтвердите личность</h1>
-        <p>Для оформления займа нужно подтвердить учетную запись через ЕСИА. Сберегательный счет доступен без подтверждения.</p>
+        <p>Для оформления займа нужно подтвердить учетную запись через ЕСИА.</p>
       </div>
       <a href="#" class="dashboard-verify__button">Подтвердить</a>
     </section>
@@ -111,7 +118,12 @@
           <div>
             <p class="dashboard-product-card__title" data-loan-title>Активных займов нет</p>
             <p class="dashboard-product-card__text" data-loan-text>Доступно до 100 000 ₽</p>
-            <span class="dashboard-product-card__badge">Нужна верификация</span>
+            <span
+              class="dashboard-product-card__badge"
+              data-loan-verification-badge
+            >
+              Нужна верификация
+            </span>
           </div>
           <img
             class="dashboard-product-card__arrow"
@@ -127,29 +139,50 @@
       <div class="dashboard-product-group">
         <h3 class="dashboard-subtitle">Сбережения</h3>
 
-        <a href="#" class="dashboard-product-card" data-savings-card>
-          <div>
-            <p class="dashboard-product-card__title" data-savings-title>Нет открытых счетов</p>
-            <p class="dashboard-product-card__text" data-savings-text>Открыть сберегательный счет</p>
-          </div>
-          <img
-            class="dashboard-product-card__arrow"
-            src="assets/svg/arrow-right.svg"
-            alt=""
-            width="20"
-            height="20"
-            aria-hidden="true"
+        <div class="dashboard-savings-list" data-savings-list>
+          <a
+            class="dashboard-product-card is-locked"
+            data-empty-savings-card
+            aria-disabled="true"
           >
-        </a>
+            <div>
+              <p class="dashboard-product-card__title">
+                Нет открытых счетов
+              </p>
+              <p class="dashboard-product-card__text">
+                Открыть сберегательный счет
+              </p>
+              <span
+                class="dashboard-product-card__badge"
+                data-savings-verification-badge
+              >
+                Нужна верификация
+              </span>
+            </div>
+            <img
+              class="dashboard-product-card__arrow"
+              src="assets/svg/arrow-right.svg"
+              alt=""
+              width="20"
+              height="20"
+              aria-hidden="true"
+            >
+          </a>
+        </div>
       </div>
     </section>
     <section class="dashboard-new-product">
-      <a href="products.html" class="dashboard-new-product__button">
+      <a
+        class="dashboard-new-product__button is-disabled"
+        data-new-product
+        aria-disabled="true"
+      >
         Новый продукт
       </a>
     </section>
   </main>
 
+  <script src="assets/js/savings-calculator.js" defer></script>
   <script src="assets/js/dashboard.js" defer></script>
 </body>
 </html>

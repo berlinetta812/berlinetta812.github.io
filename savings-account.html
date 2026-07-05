@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Сберегательный счет</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/savings-account.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img src="assets/svg/logo.svg" alt="Р-Финанс" width="44" height="44">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="savings-account-main">
+    <a href="dashboard.html" class="savings-account-back">‹ Назад</a>
+
+    <div data-account-content hidden>
+      <section class="savings-account-hero">
+        <h1 data-account-title>Сберегательный счет</h1>
+        <p class="savings-account-hero__balance" data-account-balance>0 ₽</p>
+        <div class="savings-account-hero__meta">
+          <p data-account-fixed-rate hidden>Ставка 30% годовых</p>
+          <p data-account-term>На 12 месяцев</p>
+        </div>
+      </section>
+
+      <section class="savings-funding-card" data-funding-card>
+        <h2>
+          Пополните счет, чтобы зафиксировать ставку
+          <span data-account-rate>30%</span>
+        </h2>
+        <p>
+          Пока на счете нет денег, предварительная ставка может измениться.
+        </p>
+        <button type="button" data-fund-account>Пополнить счет</button>
+      </section>
+
+      <section
+        class="savings-closure-status"
+        data-closure-status
+        hidden
+      >
+        <h2>Заявка на закрытие принята</h2>
+        <p>
+          После обработки заявки деньги будут возвращены на карту, с которой ранее был пополнен счет.
+        </p>
+        <dl class="savings-closure-status__details">
+          <div>
+            <dt>К возврату</dt>
+            <dd data-pending-return>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Заявка подана</dt>
+            <dd data-closure-requested>—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section
+        class="savings-maturity-status"
+        data-maturity-status
+        hidden
+      >
+        <h2 data-maturity-title>Срок по договору окончен</h2>
+        <p data-maturity-message>
+          Проценты зафиксированы и больше не начисляются.
+        </p>
+        <dl class="savings-maturity-status__details">
+          <div>
+            <dt>Основная сумма</dt>
+            <dd data-maturity-principal>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Начисленные проценты</dt>
+            <dd data-maturity-interest>0 ₽</dd>
+          </div>
+          <div>
+            <dt>К получению</dt>
+            <dd data-maturity-total>0 ₽</dd>
+          </div>
+        </dl>
+        <button type="button" data-request-maturity-payout>
+          Получить деньги
+        </button>
+        <a href="products.html">Открыть новый счет</a>
+      </section>
+
+      <section class="savings-account-card">
+        <h2>Реквизиты</h2>
+        <dl class="savings-account-details">
+          <div>
+            <dt>Номер счета</dt>
+            <dd data-account-number>—</dd>
+          </div>
+          <div>
+            <dt>Номер договора</dt>
+            <dd data-contract-number>—</dd>
+          </div>
+          <div>
+            <dt>Дата открытия счета</dt>
+            <dd data-account-opened>—</dd>
+          </div>
+          <div>
+            <dt>Договор</dt>
+            <dd>
+              <a
+                class="savings-contract-download"
+                href="assets/docs/individual-terms.pdf"
+                download
+              >
+                <span>Скачать</span>
+                <img
+                  src="assets/svg/download.svg"
+                  alt=""
+                  width="22"
+                  height="22"
+                  aria-hidden="true"
+                >
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <button
+        class="savings-close-account"
+        type="button"
+        data-close-account
+      >
+        Закрыть счет
+      </button>
+
+      <section class="savings-activity">
+        <div class="savings-activity__tabs" role="tablist">
+          <button
+            class="is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-activity-tab="interest"
+          >
+            График начислений
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-activity-tab="operations"
+          >
+            История операций
+          </button>
+        </div>
+
+        <div
+          class="savings-activity__panel"
+          role="tabpanel"
+          data-activity-panel="interest"
+        >
+          <label class="savings-activity__select">
+            <span>Год</span>
+            <select data-interest-year></select>
+          </label>
+
+          <div class="savings-activity__columns" aria-hidden="true">
+            <span>Плановая дата</span>
+            <span>Расчетная сумма</span>
+          </div>
+
+          <ul class="savings-activity__list" data-interest-list></ul>
+          <p class="savings-activity__empty" data-interest-empty hidden></p>
+        </div>
+
+        <div
+          class="savings-activity__panel"
+          role="tabpanel"
+          data-activity-panel="operations"
+          hidden
+        >
+          <div class="savings-activity__filters">
+            <label class="savings-activity__select">
+              <span>Тип операции</span>
+              <select data-operation-type>
+                <option value="all">Все операции</option>
+                <option value="deposit">Поступления</option>
+                <option value="withdrawal">Расходы</option>
+                <option value="interest">Проценты</option>
+              </select>
+            </label>
+
+            <label class="savings-activity__select">
+              <span>Период</span>
+              <select data-operation-period>
+                <option value="all">За все время</option>
+                <option value="week">За неделю</option>
+                <option value="month">За месяц</option>
+                <option value="year">За год</option>
+              </select>
+            </label>
+          </div>
+
+          <ul class="savings-activity__list" data-operation-list></ul>
+          <p class="savings-activity__empty" data-operation-empty hidden>
+            Операции не найдены
+          </p>
+        </div>
+      </section>
+
+      <section class="savings-dev-tools" data-dev-tools hidden>
+        <h2>Режим разработки</h2>
+        <p>
+          Эти действия имитируют серверную обработку и не войдут
+          в пользовательскую версию.
+        </p>
+        <button type="button" data-simulate-maturity hidden>
+          Имитировать окончание срока
+        </button>
+        <button type="button" data-process-closure hidden>
+          Имитировать обработку досрочного закрытия
+        </button>
+        <button type="button" data-process-maturity-payout hidden>
+          Имитировать выплату
+        </button>
+      </section>
+    </div>
+
+    <dialog class="savings-close-dialog" data-close-dialog>
+      <form method="dialog" class="savings-close-dialog__content">
+        <h2>Досрочное закрытие счета</h2>
+        <p class="savings-close-dialog__warning">
+          При закрытии счета до окончания срока начисленные проценты
+          не выплачиваются.
+        </p>
+
+        <dl class="savings-close-dialog__summary">
+          <div>
+            <dt>К возврату</dt>
+            <dd data-close-return>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Расчетные проценты к потере</dt>
+            <dd data-close-interest>0 ₽</dd>
+          </div>
+        </dl>
+
+        <div class="savings-close-dialog__actions">
+          <button type="submit" value="cancel">Отмена</button>
+          <button
+            class="savings-close-dialog__confirm"
+            type="button"
+            data-confirm-close
+          >
+            Подать заявку
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <section class="savings-account-error" data-account-error hidden>
+      <h1>Счет не найден</h1>
+      <p>Возможно, ссылка устарела или счет принадлежит другому пользователю.</p>
+      <a href="dashboard.html">Вернуться в личный кабинет</a>
+    </section>
+  </main>
+
+  <script src="assets/js/savings-calculator.js" defer></script>
+  <script src="assets/js/savings-account.js" defer></script>
+</body>
+</html>

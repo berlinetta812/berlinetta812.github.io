@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Обязательные мета-теги. Необходимо добавить остальные! -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="format-detection" content="telephone=no">
   
-  <!-- Название страницы (до 60 символов) -->
   <title>Р-Финанс | Сбережения</title>
   
-  <!-- Описание для SEO (до 160 символов) -->
   <meta name="description" content="30% годовых по сберегательной программе. Открыть онлайн.">
   
-  <!-- Иконки -->
-  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
   
-  <!-- Основные CSS -->
   <link rel="stylesheet" href="assets/css/style.css"> <!-- Основные стили -->
   
-  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   
   <!-- Каноническая ссылка для SEO -->
@@ -75,7 +72,7 @@
               <!-- Срок -->
             <div class="calculator-row calculator-row--top">
               <span class="calculator-label">Срок вклада</span>
-              <span class="calculator-value"><span id="dep-term">6</span>месяцев</span>
+              <span class="calculator-value" id="dep-term">6 месяцев</span>
             </div>
 
             <div class="calculator-row calculator-row--range">
@@ -106,7 +103,7 @@
                 id="dep-amount-range"
                 min="50000"
                 max="30000000"
-                step="50000"
+                step="10000"
                 value="100000"
                 aria-label="Регулировка суммы вклада"
               >
@@ -117,23 +114,13 @@
               </div>
             </div>
 
-
-            <!-- Пополняемый -->
-            <div class="calculator-row">
-              <label class="dep-check">
-                <input type="checkbox" id="dep-topup">
-                <span>Пополняемый счет</span>
-              </label>
-            </div>
-
             <!-- Результаты -->
             <div class="dep-results">
               <div class="dep-results__rate">
                 <span class="dep-results__rate-label">Ставка</span>
                 <span class="dep-results__rate-value">
-                  <span id="dep-rate">30.00</span>%
+                  <span id="dep-rate">30</span>%
                 </span>
-                <span class="dep-rate-old" id="dep-rate-old" aria-hidden="true"></span>
               </div>
 
               <div class="dep-results__item">
@@ -377,6 +364,7 @@
   <div class="sheet-overlay" data-sheet-overlay aria-hidden="true"></div>
 
   <!-- Скрипты -->
+  <script src="assets/js/savings-calculator.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   
   <script>

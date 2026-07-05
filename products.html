@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Новый продукт</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img src="assets/svg/logo.svg" alt="Р-Финанс" width="44" height="44">
+        </a>
+      </div>
+
+      <a href="dashboard.html" class="product-flow-back">Назад</a>
+    </div>
+  </header>
+
+  <main class="dashboard-main product-flow-main">
+    <section aria-labelledby="products-title">
+      <h1 class="dashboard-title" id="products-title">Новый продукт</h1>
+
+      <p class="product-flow-intro">
+        Выберите продукт, который хотите оформить.
+      </p>
+
+      <a href="open-savings.html"
+         class="dashboard-product-card product-option">
+        <div class="product-option__content">
+          <h2 class="product-option__title">Сберегательный счет</h2>
+
+          <ul class="product-option__conditions">
+            <li>Без дополнительных пополнений</li>
+            <li>Ежемесячная капитализация, выплата в конце срока</li>
+            <li>Управление счетом в личном кабинете</li>
+          </ul>
+
+          <div class="product-option__stats">
+            <div class="product-option__stat">
+              <span class="product-option__value">от 50 тыс. ₽</span>
+              <span class="product-option__label">Минимальная сумма</span>
+            </div>
+
+            <div class="product-option__stat">
+              <span class="product-option__value">до 30%</span>
+              <span class="product-option__label">Годовая ставка</span>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="dashboard-product-card__arrow"
+          src="assets/svg/arrow-right.svg"
+          alt=""
+          width="20"
+          height="20"
+          aria-hidden="true"
+        >
+      </a>
+    </section>
+  </main>
+
+  <script src="assets/js/product-flow.js" defer></script>
+</body>
+</html>
