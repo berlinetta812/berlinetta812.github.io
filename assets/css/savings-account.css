@@ -38,7 +38,7 @@
 }
 
 .savings-account-hero__balance {
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 2.4rem;
   font-weight: 750;
   line-height: 1;
@@ -203,6 +203,20 @@
   font-weight: 750;
 }
 
+.savings-closure-status__retry {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  background: rgb(57, 59, 244);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
 .savings-maturity-status {
   padding: 22px;
   border-radius: 22px;
@@ -275,6 +289,43 @@
   color: rgb(57, 59, 244);
   text-decoration: none;
   background: rgba(255, 255, 255, 0.72);
+}
+
+.savings-closed-status {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgb(238, 240, 243);
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.04);
+}
+
+.savings-closed-status h2 {
+  font-size: 1.05rem;
+}
+
+.savings-closed-status__details {
+  margin-top: 16px;
+  display: grid;
+  gap: 9px;
+}
+
+.savings-closed-status__details div {
+  padding: 13px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.savings-closed-status__details dt {
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.7rem;
+}
+
+.savings-closed-status__details dd {
+  text-align: right;
+  font-size: 0.78rem;
+  font-weight: 750;
 }
 
 .savings-dev-tools {

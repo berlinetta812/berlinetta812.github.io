@@ -282,6 +282,50 @@
   display: none;
 }
 
+.dashboard-archive {
+  margin-top: 14px;
+}
+
+.dashboard-archive summary {
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(17, 17, 17, 0.62);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dashboard-archive summary::-webkit-details-marker {
+  display: none;
+}
+
+.dashboard-archive summary span {
+  min-width: 28px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: rgba(17, 17, 17, 0.54);
+  background: rgb(230, 231, 234);
+  text-align: center;
+  font-size: 0.68rem;
+}
+
+.dashboard-savings-list--closed {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.dashboard-savings-list--closed .dashboard-product-card {
+  min-height: 96px;
+  box-shadow: none;
+}
+
 @media (max-width: 380px) {
   .dashboard-verify {
     align-items: flex-start;
@@ -325,19 +369,8 @@
   pointer-events: none;
 }
 
-.product-flow-back {
-  margin-right: 16px;
-  padding: 8px 12px;
-  border-radius: 12px;
-  color: #111;
-  background: rgb(234, 235, 237);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
 .product-flow-main {
-  padding-top: 30px;
+  padding-top: 24px;
 }
 
 .product-flow-intro {
@@ -680,4 +713,181 @@
 .dashboard-savings-list {
   display: grid;
   gap: 14px;
+}
+
+.loan-form,
+.loan-sms {
+  display: grid;
+  gap: 24px;
+}
+
+.loan-hero {
+  display: grid;
+  gap: 10px;
+}
+
+.loan-hero__label {
+  width: fit-content;
+  padding: 7px 11px;
+  border-radius: 999px;
+  color: rgb(57, 59, 244);
+  background: rgba(57, 59, 244, 0.09);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.loan-hero__text {
+  color: rgba(17, 17, 17, 0.58);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.loan-summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.05);
+}
+
+.loan-summary__label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.74rem;
+  line-height: 1.25;
+}
+
+.loan-summary strong {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.loan-summary__old {
+  color: rgba(17, 17, 17, 0.46);
+  text-decoration: line-through;
+}
+
+.loan-help {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  color: rgba(17, 17, 17, 0.55);
+  background: rgb(246, 246, 247);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.loan-help-popover {
+  position: absolute;
+  right: 18px;
+  bottom: calc(100% + 10px);
+  z-index: 5;
+  width: min(280px, calc(100vw - 48px));
+  padding: 14px;
+  border-radius: 16px;
+  color: rgba(17, 17, 17, 0.7);
+  background: #fff;
+  box-shadow: 0 14px 36px rgba(17, 17, 17, 0.14);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.loan-card-link {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.05);
+}
+
+.loan-card-link h2 {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.loan-card-link p {
+  margin-top: 8px;
+  color: rgba(17, 17, 17, 0.58);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.loan-card-link__button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 16px;
+  color: rgb(57, 59, 244);
+  background: rgba(57, 59, 244, 0.09);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.loan-sms__text {
+  color: rgba(17, 17, 17, 0.58);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.loan-sms__field {
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  color: rgba(17, 17, 17, 0.52);
+  background: rgb(238, 239, 243);
+  font-size: 0.8rem;
+}
+
+.loan-sms__field input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #111;
+  background: transparent;
+  font: inherit;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.loan-sms__error {
+  color: rgb(219, 42, 47);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.loan-sms__back {
+  min-height: 48px;
+  border: 0;
+  border-radius: 16px;
+  color: rgba(17, 17, 17, 0.58);
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .loan-summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .loan-summary > div:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  .loan-help {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
