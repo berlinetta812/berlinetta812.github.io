@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Первый займ</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img
+            src="assets/svg/logo.svg"
+            alt="Р-Финанс"
+            width="44"
+            height="44"
+          >
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main savings-open-main">
+    <a href="dashboard.html" class="savings-back">‹ Назад</a>
+
+    <form class="loan-form" data-loan-form>
+      <section class="loan-hero">
+        <p class="loan-hero__label">Одобрено до 10 000 ₽</p>
+        <h1 class="savings-title">Первый займ</h1>
+        <p class="loan-hero__text">
+          Выберите сумму и срок. Верните займ в срок или раньше —
+          проценты по акции составят 0 ₽.
+        </p>
+      </section>
+
+      <section class="savings-amount-card">
+        <label for="loan-amount">Сумма займа, ₽</label>
+
+        <input
+          id="loan-amount"
+          type="text"
+          inputmode="numeric"
+          value="5 000"
+          autocomplete="off"
+          data-loan-amount
+        >
+
+        <input
+          class="savings-range"
+          type="range"
+          min="2000"
+          max="10000"
+          step="100"
+          value="5000"
+          aria-label="Сумма займа"
+          data-loan-amount-range
+        >
+
+        <div class="savings-range-limits">
+          <span>2 000 ₽</span>
+          <span>10 000 ₽</span>
+        </div>
+      </section>
+
+      <section class="savings-calculator">
+        <h2>Срок займа</h2>
+
+        <div class="savings-term-card">
+          <label for="loan-term">Срок пользования</label>
+          <output for="loan-term" data-loan-term-output>15 дней</output>
+
+          <input
+            id="loan-term"
+            class="savings-range"
+            type="range"
+            min="1"
+            max="30"
+            step="1"
+            value="15"
+            aria-label="Срок займа"
+            data-loan-term
+          >
+        </div>
+
+        <div class="savings-range-limits">
+          <span>1 день</span>
+          <span>30 дней</span>
+        </div>
+      </section>
+
+      <section class="loan-summary">
+        <div>
+          <span class="loan-summary__label">К возврату по акции</span>
+          <strong data-loan-promo-return>5 000 ₽</strong>
+        </div>
+
+        <div>
+          <span class="loan-summary__label">Без акции</span>
+          <strong class="loan-summary__old" data-loan-contract-return>
+            5 487,50 ₽
+          </strong>
+        </div>
+
+        <button
+          class="loan-help"
+          type="button"
+          aria-expanded="false"
+          data-loan-help
+        >
+          ?
+        </button>
+
+        <p class="loan-help-popover" data-loan-help-popover hidden>
+          При условии возврата в срок или раньше проценты не начисляются.
+          При просрочке проценты рассчитываются по ставке 0,65% в день.
+        </p>
+      </section>
+
+      <section class="loan-card-link" data-loan-card-section>
+        <div>
+          <h2>Карта для получения денег</h2>
+          <p data-loan-card-text>
+            Деньги поступят на выбранную карту после подписания договора.
+          </p>
+        </div>
+
+        <button
+          class="loan-card-link__button"
+          type="button"
+          data-loan-bind-card
+        >
+          + Привязать карту
+        </button>
+      </section>
+
+      <label class="savings-consent">
+        <input type="checkbox" data-loan-consent>
+
+        <span>
+          Я согласен с
+          <a
+            href="assets/docs/first-loan-terms.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            индивидуальными условиями займа
+          </a>
+        </span>
+      </label>
+
+      <button
+        class="savings-submit"
+        type="submit"
+        disabled
+        data-loan-submit
+      >
+        Получить деньги
+      </button>
+    </form>
+
+    <section class="loan-sms" data-loan-sms hidden>
+      <h1 class="savings-title">Подтвердите оформление</h1>
+      <p class="loan-sms__text">
+        Введите код из SMS. Для mock-подтверждения используйте код
+        <strong>111111</strong>.
+      </p>
+
+      <label class="loan-sms__field" for="loan-code">
+        Код подтверждения
+        <input
+          id="loan-code"
+          type="text"
+          inputmode="numeric"
+          maxlength="6"
+          autocomplete="one-time-code"
+          placeholder="000000"
+          data-loan-code
+        >
+      </label>
+
+      <p class="loan-sms__error" data-loan-code-error hidden>
+        Проверьте код — он неправильный
+      </p>
+
+      <button
+        class="savings-submit"
+        type="button"
+        data-loan-confirm
+      >
+        Подтвердить
+      </button>
+
+      <button
+        class="loan-sms__back"
+        type="button"
+        data-loan-edit
+      >
+        Изменить условия
+      </button>
+    </section>
+  </main>
+
+  <script src="assets/js/loan-flow.js" defer></script>
+</body>
+</html>
