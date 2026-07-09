@@ -8,6 +8,9 @@ function readStorage(key, fallback) {
 }
 
 const flowSession = readStorage('rf_session', null);
+const SAVINGS_TERMS_VERSION = 'savings-2026-07-06-v1';
+const SAVINGS_CALCULATION_VERSION = 'monthly-capitalization-v1';
+const SAVINGS_TERMS_DOCUMENT = 'assets/docs/individual-terms.pdf';
 
 if (!flowSession) {
   window.location.replace('login.html');
@@ -180,6 +183,22 @@ if (savingsForm) {
         ? `savings-${crypto.randomUUID()}`
         : `savings-${Date.now()}`;
     const openedAt = new Date().toISOString();
+    const acceptedAt = openedAt;
+    const contractSnapshot = {
+      productCode: 'savings-fixed-term',
+      productName: 'Сберегательный счет',
+      amount: currentCalculation.amount,
+      termMonths: currentCalculation.months,
+      annualRate: currentCalculation.rate,
+      projectedIncome: currentCalculation.income,
+      projectedFinalAmount: currentCalculation.finalAmount,
+      capitalization: 'monthly',
+      interestPayout: 'at_maturity',
+      additionalFunding: false,
+      partialWithdrawal: false,
+      earlyClosureInterest: 'forfeited',
+      calculationVersion: SAVINGS_CALCULATION_VERSION
+    };
 
     const account = {
       id: accountId,
@@ -197,6 +216,12 @@ if (savingsForm) {
 
       projectedIncome: currentCalculation.income,
       projectedFinalAmount: currentCalculation.finalAmount,
+
+      termsVersion: SAVINGS_TERMS_VERSION,
+      termsDocument: SAVINGS_TERMS_DOCUMENT,
+      termsAcceptedAt: acceptedAt,
+      consentMethod: 'checkbox',
+      contractSnapshot,
 
       status: 'awaiting_funding',
       openedAt,

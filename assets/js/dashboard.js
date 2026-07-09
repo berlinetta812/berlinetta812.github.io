@@ -101,14 +101,37 @@ const savingsAccounts = Array.isArray(storedSavingsAccounts)
       (account) => account.ownerPhone === session?.phone
     )
   : [];
+const storedClosedSavingsAccounts = readStorage(
+  'rf_closed_savings_accounts',
+  []
+);
+const closedSavingsAccounts = Array.isArray(
+  storedClosedSavingsAccounts
+)
+  ? storedClosedSavingsAccounts.filter(
+      (account) => account.ownerPhone === session?.phone
+    )
+  : [];
+const storedLoans = readStorage('rf_loans', []);
+const loans = Array.isArray(storedLoans)
+  ? storedLoans.filter((loan) => loan.ownerPhone === session?.phone)
+  : [];
+const activeLoan = loans.find((loan) =>
+  ['active', 'overdue', 'extension_pending'].includes(loan.status)
+);
+const firstLoanCompleted = loans.some(
+  (loan) => loan.type === 'first_loan' && loan.status === 'paid'
+);
 
 const profile = {
   phone: session?.phone || '79991234567',
   name: session?.name || null,
   verified: session?.verified === true,
   email: null,
-  loan: null,
-  savings: savingsAccounts
+  loan: activeLoan || null,
+  firstLoanCompleted,
+  savings: savingsAccounts,
+  closedSavings: closedSavingsAccounts
 };
 
 const body = document.body;
@@ -136,6 +159,10 @@ const savingsVerificationBadge = document.querySelector(
 );
 const newProductButton = document.querySelector('[data-new-product]');
 const dashboardNotice = document.querySelector('[data-dashboard-notice]');
+const savingsArchive = document.querySelector('[data-savings-archive]');
+const closedSavingsList = document.querySelector(
+  '[data-closed-savings-list]'
+);
 let menuScrollPosition = 0;
 
 function formatRussianPhone(value) {
@@ -206,6 +233,29 @@ function formatMoney(value) {
   return `${amount.toLocaleString('ru-RU')} ₽`;
 }
 
+function formatDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return '—';
+  }
+
+  return new Intl.DateTimeFormat('ru-RU').format(date);
+}
+
+function formatLoanDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return '—';
+  }
+
+  return new Intl.DateTimeFormat('ru-RU', {
+    day: 'numeric',
+    month: 'long'
+  }).format(date);
+}
+
 function renderDashboardNotice() {
   const notice = readStorage('rf_dashboard_notice', null);
 
@@ -221,6 +271,17 @@ function renderDashboardNotice() {
       '[data-dashboard-notice-text]'
     ).textContent =
       `Сумма ${formatMoney(notice.amount)} возвращена клиенту.`;
+    dashboardNotice.hidden = false;
+  }
+
+  if (notice.type === 'loan_issued') {
+    document.querySelector(
+      '[data-dashboard-notice-title]'
+    ).textContent = 'Займ оформлен';
+    document.querySelector(
+      '[data-dashboard-notice-text]'
+    ).textContent =
+      `Сумма ${formatMoney(notice.amount)} отправлена на карту ${notice.cardMask}.`;
     dashboardNotice.hidden = false;
   }
 
@@ -293,6 +354,13 @@ function createSavingsCard(account) {
     content.append(status);
   }
 
+  if (account.status === 'payout_failed') {
+    const status = document.createElement('span');
+    status.className = 'dashboard-product-card__badge';
+    status.textContent = 'Ошибка выплаты';
+    content.append(status);
+  }
+
   const arrow = document.createElement('img');
   arrow.className = 'dashboard-product-card__arrow';
   arrow.src = 'assets/svg/arrow-right.svg';
@@ -316,6 +384,59 @@ function renderSavingsAccounts() {
   profile.savings.forEach((account) => {
     savingsList.append(createSavingsCard(account));
   });
+}
+
+function renderClosedSavingsAccounts() {
+  if (!profile.closedSavings.length) {
+    return;
+  }
+
+  document.querySelector('[data-closed-savings-count]').textContent =
+    String(profile.closedSavings.length);
+  closedSavingsList.replaceChildren();
+
+  profile.closedSavings
+    .slice()
+    .sort(
+      (left, right) =>
+        new Date(right.closedAt) - new Date(left.closedAt)
+    )
+    .forEach((account) => {
+      const card = document.createElement('a');
+      const content = document.createElement('div');
+      const amount = document.createElement('p');
+      const description = document.createElement('p');
+      const status = document.createElement('span');
+      const arrow = document.createElement('img');
+
+      card.className = 'dashboard-product-card';
+      card.href =
+        `savings-account.html?id=${encodeURIComponent(account.id)}` +
+        '&archive=closed';
+
+      amount.className = 'dashboard-product-card__title';
+      amount.textContent = formatMoney(account.returnedAmount);
+
+      description.className = 'dashboard-product-card__text';
+      description.textContent =
+        `Закрыт ${formatDate(account.closedAt)}`;
+
+      status.className = 'dashboard-product-card__badge';
+      status.textContent = 'Архив';
+
+      arrow.className = 'dashboard-product-card__arrow';
+      arrow.src = 'assets/svg/arrow-right.svg';
+      arrow.alt = '';
+      arrow.width = 20;
+      arrow.height = 20;
+      arrow.setAttribute('aria-hidden', 'true');
+
+      content.append(amount, description, status);
+      card.append(content, arrow);
+      closedSavingsList.append(card);
+    });
+
+  savingsArchive.hidden = false;
 }
 
 function renderProductAccess() {
@@ -357,21 +478,45 @@ function renderProductAccess() {
 function renderProducts() {
   if (profile.verified) {
     loanCard.classList.remove('is-locked');
-    loanCard.setAttribute('role', 'link');
-    loanCard.tabIndex = 0;
-    loanVerificationBadge.hidden = true;
-    loanTitle.textContent = profile.loan ? `Активный займ на ${profile.loan.amount} ₽` : 'Активных займов нет';
-    loanText.textContent = profile.loan ? 'Перейти к деталям займа' : 'Доступно до 100 000 ₽';
-  } else {
-    loanCard.classList.add('is-locked');
-    loanCard.removeAttribute('role');
+    loanCard.href = profile.loan ? '#' : 'first-loan.html';
+    loanCard.removeAttribute('aria-disabled');
     loanCard.removeAttribute('tabindex');
+    loanVerificationBadge.hidden = true;
+
+    if (profile.loan) {
+      loanCard.removeAttribute('href');
+      loanTitle.textContent =
+        `Активный займ на ${formatMoney(profile.loan.amount)}`;
+      loanText.textContent =
+        `Вернуть до ${formatLoanDate(profile.loan.dueDate)}`;
+    } else if (profile.firstLoanCompleted) {
+      loanCard.removeAttribute('href');
+      loanCard.classList.add('is-locked');
+      loanCard.setAttribute('aria-disabled', 'true');
+      loanCard.tabIndex = -1;
+      loanVerificationBadge.hidden = false;
+      loanVerificationBadge.textContent = 'Кредитная линия скоро';
+      loanTitle.textContent = 'Первый займ погашен';
+      loanText.textContent =
+        'Следующим этапом откроем кредитную линию';
+    } else {
+      loanTitle.textContent = 'Первый займ';
+      loanText.textContent = 'Одобрено до 10 000 ₽ · Получить деньги';
+    }
+  } else {
+    loanCard.removeAttribute('href');
+    loanCard.classList.add('is-locked');
+    loanCard.setAttribute('aria-disabled', 'true');
+    loanCard.tabIndex = -1;
     loanVerificationBadge.hidden = false;
+    loanVerificationBadge.textContent = 'Нужна верификация';
     loanTitle.textContent = 'Активных займов нет';
-    loanText.textContent = 'Доступно до 100 000 ₽ после подтверждения личности';
+    loanText.textContent =
+      'Первый займ до 10 000 ₽ после подтверждения личности';
   }
 
   renderSavingsAccounts();
+  renderClosedSavingsAccounts();
   renderProductAccess();
 }
 

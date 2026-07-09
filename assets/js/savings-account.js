@@ -13,8 +13,13 @@ if (!session) {
   window.location.replace('login.html');
 }
 
-const accountId = new URLSearchParams(window.location.search).get('id');
-let storedAccounts = readStorage('rf_savings_accounts', []);
+const accountParams = new URLSearchParams(window.location.search);
+const accountId = accountParams.get('id');
+const isArchiveView = accountParams.get('archive') === 'closed';
+const accountStorageKey = isArchiveView
+  ? 'rf_closed_savings_accounts'
+  : 'rf_savings_accounts';
+let storedAccounts = readStorage(accountStorageKey, []);
 
 let account = Array.isArray(storedAccounts)
   ? storedAccounts.find(
@@ -307,10 +312,17 @@ function createActivityItem(title, date, amount, type = 'neutral') {
 }
 
 function buildInterestSchedule() {
+  const schedulePrincipal = Number(
+    account?.principalAmount ??
+    account?.closurePrincipal ??
+    account?.plannedAmount ??
+    account?.balance
+  );
+
   if (
     !account ||
     !account.fundedAt ||
-    Number(account.balance) <= 0
+    schedulePrincipal <= 0
   ) {
     return [];
   }
@@ -507,7 +519,11 @@ function renderAccount() {
     account.title || 'Сберегательный счет';
 
   document.querySelector('[data-account-balance]').textContent =
-    formatMoney(account.balance);
+    formatMoney(
+      account.status === 'closed'
+        ? account.returnedAmount
+        : account.balance
+    );
 
   document.querySelector('[data-account-term]').textContent =
     `На ${months}`;
@@ -551,12 +567,38 @@ function renderAccount() {
     if (DEV_MOCK_CLOSURE_PROCESSING) {
       document.querySelector('[data-dev-tools]').hidden = false;
       processButton.hidden = false;
+      document.querySelector(
+        '[data-fail-closure-payout]'
+      ).hidden = false;
     }
   }
 
   if (
+    account.status === 'payout_failed' &&
+    account.payoutReason === 'early_closure'
+  ) {
+    document.querySelector('[data-closure-status]').hidden = false;
+    document.querySelector('[data-closure-title]').textContent =
+      'Не удалось вернуть деньги';
+    document.querySelector('[data-closure-message]').textContent =
+      'Платеж был отклонен. Деньги остаются на счете — повторите заявку.';
+    document.querySelector('[data-pending-return]').textContent =
+      formatMoneyPrecise(account.payoutAmount);
+    document.querySelector('[data-closure-requested]').textContent =
+      formatDate(account.payoutFailedAt);
+    document.querySelector(
+      '[data-retry-closure-payout]'
+    ).hidden = false;
+    document.querySelector('[data-close-account]').hidden = true;
+  }
+
+  if (
     account.status === 'matured' ||
-    account.status === 'payout_pending'
+    account.status === 'payout_pending' ||
+    (
+      account.status === 'payout_failed' &&
+      account.payoutReason === 'maturity'
+    )
   ) {
     const maturityStatus = document.querySelector(
       '[data-maturity-status]'
@@ -593,7 +635,18 @@ function renderAccount() {
         document.querySelector(
           '[data-process-maturity-payout]'
         ).hidden = false;
+        document.querySelector(
+          '[data-fail-maturity-payout]'
+        ).hidden = false;
       }
+    }
+
+    if (account.status === 'payout_failed') {
+      document.querySelector('[data-maturity-title]').textContent =
+        'Не удалось выполнить выплату';
+      document.querySelector('[data-maturity-message]').textContent =
+        'Платеж был отклонен. Деньги остаются на счете — повторите заявку.';
+      requestPayoutButton.textContent = 'Повторить заявку';
     }
   }
 
@@ -603,6 +656,30 @@ function renderAccount() {
   ) {
     document.querySelector('[data-dev-tools]').hidden = false;
     document.querySelector('[data-simulate-maturity]').hidden = false;
+  }
+
+  if (account.status === 'closed') {
+    const closeReasons = {
+      early_closure: 'Досрочное закрытие',
+      maturity: 'Окончание срока'
+    };
+
+    document.querySelector('[data-closed-status]').hidden = false;
+    document.querySelector('[data-account-closed]').textContent =
+      formatDate(account.closedAt);
+    document.querySelector('[data-account-returned]').textContent =
+      formatMoneyPrecise(account.returnedAmount);
+    document.querySelector('[data-account-close-reason]').textContent =
+      closeReasons[account.closeReason] ||
+      (
+        account.closureType === 'early'
+          ? closeReasons.early_closure
+          : 'Закрытие счета'
+      );
+    document.querySelector('[data-close-account]').hidden = true;
+    document.querySelector('[data-funding-card]').hidden = true;
+    document.querySelector('[data-account-term]').textContent =
+      `Закрыт ${formatLongDate(account.closedAt)}`;
   }
 
   document.querySelector('[data-account-number]').textContent =
@@ -640,6 +717,10 @@ document.querySelector('[data-fund-account]')?.addEventListener('click', () => {
     typeof crypto.randomUUID === 'function'
       ? `operation-${crypto.randomUUID()}`
       : `operation-${Date.now()}`;
+  const fundingTransactionId =
+    typeof crypto.randomUUID === 'function'
+      ? `funding-${crypto.randomUUID()}`
+      : `funding-${Date.now()}`;
 
   const updatedAccounts = storedAccounts.map((item) => {
     if (
@@ -653,6 +734,10 @@ document.querySelector('[data-fund-account]')?.addEventListener('click', () => {
       ...item,
       balance: fundingAmount,
       principalAmount: fundingAmount,
+      fundingTransactionId,
+      fundingProvider: 'mock-payments',
+      fundingMethod: 'bank_card',
+      fundingCardMask: '•••• 0000',
       fixedRate: Number(item.previewRate) || 0,
       status: 'active',
       fundedAt: fundedAt.toISOString(),
@@ -673,6 +758,26 @@ document.querySelector('[data-fund-account]')?.addEventListener('click', () => {
   localStorage.setItem(
     'rf_savings_accounts',
     JSON.stringify(updatedAccounts)
+  );
+  const fundingPayments = readStorage('rf_savings_payments', []);
+
+  localStorage.setItem(
+    'rf_savings_payments',
+    JSON.stringify([
+      ...(Array.isArray(fundingPayments) ? fundingPayments : []),
+      {
+        id: fundingTransactionId,
+        ownerPhone: session.phone,
+        accountId: account.id,
+        direction: 'incoming',
+        amount: fundingAmount,
+        provider: 'mock-payments',
+        method: 'bank_card',
+        maskedCard: '•••• 0000',
+        status: 'completed',
+        createdAt: fundedAt.toISOString()
+      }
+    ])
   );
 
   window.location.reload();
@@ -773,6 +878,7 @@ function finalizeAccountPayout(reason, returnAmount) {
     balance: 0,
     status: 'closed',
     closedAt: processedAt,
+    closeReason: reason,
     payoutProcessedAt: processedAt,
     ...(reason === 'early_closure'
       ? { closureProcessedAt: processedAt }
@@ -823,6 +929,10 @@ function finalizeAccountPayout(reason, returnAmount) {
         contractNumber: account.contractNumber,
         amount: returnAmount,
         reason,
+        sourceTransactionId: account.fundingTransactionId || null,
+        provider: account.fundingProvider || 'mock-payments',
+        destinationMethod: account.fundingMethod || 'bank_card',
+        destinationMask: account.fundingCardMask || null,
         status: 'completed',
         createdAt: processedAt
       }
@@ -838,6 +948,60 @@ function finalizeAccountPayout(reason, returnAmount) {
   );
 
   window.location.replace('dashboard.html');
+}
+
+function markPayoutFailed(reason, returnAmount) {
+  const failedAt = new Date().toISOString();
+  const payoutAttemptId =
+    typeof crypto.randomUUID === 'function'
+      ? `payout-${crypto.randomUUID()}`
+      : `payout-${Date.now()}-failed`;
+  const updatedAccounts = storedAccounts.map((item) => {
+    if (
+      item.id !== account.id ||
+      item.ownerPhone !== session.phone
+    ) {
+      return item;
+    }
+
+    return {
+      ...item,
+      status: 'payout_failed',
+      payoutReason: reason,
+      payoutAmount: returnAmount,
+      payoutFailedAt: failedAt,
+      payoutErrorCode: 'MOCK_PROVIDER_REJECTED'
+    };
+  });
+
+  localStorage.setItem(
+    'rf_savings_accounts',
+    JSON.stringify(updatedAccounts)
+  );
+  const payouts = readStorage('rf_savings_payouts', []);
+
+  localStorage.setItem(
+    'rf_savings_payouts',
+    JSON.stringify([
+      ...(Array.isArray(payouts) ? payouts : []),
+      {
+        id: payoutAttemptId,
+        ownerPhone: session.phone,
+        accountId: account.id,
+        contractNumber: account.contractNumber,
+        amount: returnAmount,
+        reason,
+        sourceTransactionId: account.fundingTransactionId || null,
+        provider: account.fundingProvider || 'mock-payments',
+        destinationMethod: account.fundingMethod || 'bank_card',
+        destinationMask: account.fundingCardMask || null,
+        status: 'failed',
+        errorCode: 'MOCK_PROVIDER_REJECTED',
+        createdAt: failedAt
+      }
+    ])
+  );
+  window.location.reload();
 }
 
 document.querySelector('[data-simulate-maturity]')?.addEventListener('click', () => {
@@ -878,7 +1042,16 @@ document.querySelector('[data-simulate-maturity]')?.addEventListener('click', ()
 });
 
 document.querySelector('[data-request-maturity-payout]')?.addEventListener('click', () => {
-  if (!account || account.status !== 'matured') {
+  if (
+    !account ||
+    !(
+      account.status === 'matured' ||
+      (
+        account.status === 'payout_failed' &&
+        account.payoutReason === 'maturity'
+      )
+    )
+  ) {
     return;
   }
 
@@ -903,8 +1076,11 @@ document.querySelector('[data-request-maturity-payout]')?.addEventListener('clic
     return {
       ...item,
       status: 'payout_pending',
+      payoutReason: 'maturity',
       payoutRequestedAt: requestedAt,
-      payoutAmount
+      payoutAmount,
+      payoutFailedAt: null,
+      payoutErrorCode: null
     };
   });
 
@@ -943,6 +1119,52 @@ document.querySelector('[data-process-closure]')?.addEventListener('click', () =
   finalizeAccountPayout('early_closure', returnAmount);
 });
 
+document.querySelector('[data-fail-closure-payout]')?.addEventListener('click', () => {
+  if (!account || account.status !== 'closure_pending') {
+    return;
+  }
+
+  const returnAmount = Number(
+    account.closurePrincipal ?? account.balance
+  ) || 0;
+
+  markPayoutFailed('early_closure', returnAmount);
+});
+
+document.querySelector('[data-retry-closure-payout]')?.addEventListener('click', () => {
+  if (
+    !account ||
+    account.status !== 'payout_failed' ||
+    account.payoutReason !== 'early_closure'
+  ) {
+    return;
+  }
+
+  const requestedAt = new Date().toISOString();
+  const updatedAccounts = storedAccounts.map((item) => {
+    if (
+      item.id !== account.id ||
+      item.ownerPhone !== session.phone
+    ) {
+      return item;
+    }
+
+    return {
+      ...item,
+      status: 'closure_pending',
+      closureRequestedAt: requestedAt,
+      payoutFailedAt: null,
+      payoutErrorCode: null
+    };
+  });
+
+  localStorage.setItem(
+    'rf_savings_accounts',
+    JSON.stringify(updatedAccounts)
+  );
+  window.location.reload();
+});
+
 document.querySelector('[data-process-maturity-payout]')?.addEventListener('click', () => {
   const processButton = document.querySelector(
     '[data-process-maturity-payout]'
@@ -971,6 +1193,18 @@ document.querySelector('[data-process-maturity-payout]')?.addEventListener('clic
   processButton.disabled = true;
   processButton.textContent = 'Выполняем выплату...';
   finalizeAccountPayout('maturity', returnAmount);
+});
+
+document.querySelector('[data-fail-maturity-payout]')?.addEventListener('click', () => {
+  if (!account || account.status !== 'payout_pending') {
+    return;
+  }
+
+  const returnAmount = Number(
+    account.payoutAmount ?? account.balance
+  ) || 0;
+
+  markPayoutFailed('maturity', returnAmount);
 });
 
 synchronizeMaturity();
