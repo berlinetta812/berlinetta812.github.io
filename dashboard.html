@@ -114,10 +114,10 @@
       <div class="dashboard-product-group">
         <h3 class="dashboard-subtitle">Займы</h3>
 
-        <article class="dashboard-product-card is-locked" data-loan-card>
+        <a class="dashboard-product-card is-locked" data-loan-card aria-disabled="true">
           <div>
             <p class="dashboard-product-card__title" data-loan-title>Активных займов нет</p>
-            <p class="dashboard-product-card__text" data-loan-text>Доступно до 100 000 ₽</p>
+            <p class="dashboard-product-card__text" data-loan-text>Доступно до 10 000 ₽</p>
             <span
               class="dashboard-product-card__badge"
               data-loan-verification-badge
@@ -133,7 +133,7 @@
             height="20"
             aria-hidden="true"
           >
-        </article>
+        </a>
       </div>
 
       <div class="dashboard-product-group">
@@ -169,6 +169,17 @@
             >
           </a>
         </div>
+
+        <details class="dashboard-archive" data-savings-archive hidden>
+          <summary>
+            Закрытые счета
+            <span data-closed-savings-count>0</span>
+          </summary>
+          <div
+            class="dashboard-savings-list dashboard-savings-list--closed"
+            data-closed-savings-list
+          ></div>
+        </details>
       </div>
     </section>
     <section class="dashboard-new-product">
@@ -179,6 +190,17 @@
       >
         Новый продукт
       </a>
+    </section>
+
+    <section class="dashboard-loan-dev" data-loan-dev-tools hidden>
+      <h2>Режим разработки</h2>
+      <p>
+        Сброс удалит только mock-историю первого займа текущего
+        пользователя и позволит пройти сценарий заново.
+      </p>
+      <button type="button" data-reset-first-loan>
+        Повторить тест первого займа
+      </button>
     </section>
   </main>
 

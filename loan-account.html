@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Детали займа</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/loan-account.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img src="assets/svg/logo.svg" alt="Р-Финанс" width="44" height="44">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="loan-account-main">
+    <a href="dashboard.html" class="loan-account-back">‹ Назад</a>
+
+    <div class="loan-account-content" data-loan-content hidden>
+      <section class="loan-account-hero">
+        <div class="loan-account-hero__top">
+          <p class="loan-account-hero__type">Первый займ</p>
+          <span class="loan-account-status" data-loan-status>Активен</span>
+        </div>
+        <h1 data-loan-amount>10 000 ₽</h1>
+        <p class="loan-account-hero__caption">Сумма займа</p>
+
+        <dl class="loan-account-hero__summary">
+          <div>
+            <dt>К возврату сегодня</dt>
+            <dd data-loan-due-amount>10 000 ₽</dd>
+          </div>
+          <div>
+            <dt>Вернуть до</dt>
+            <dd data-loan-due-date>—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="loan-account-promo" data-loan-promo>
+        <h2>Займ без процентов</h2>
+        <p data-loan-promo-text>
+          Верните займ полностью в срок или раньше, и проценты по акции
+          составят 0 ₽.
+        </p>
+      </section>
+
+      <button
+        class="loan-account-extend"
+        type="button"
+        data-extend-loan
+        hidden
+      >
+        Продлить срок займа
+      </button>
+      <button class="loan-account-repay" type="button" data-repay-loan>
+        Погасить займ
+      </button>
+
+      <section class="loan-account-card">
+        <h2>Детали займа</h2>
+        <dl class="loan-account-details">
+          <div>
+            <dt>Срок</dt>
+            <dd data-loan-term>—</dd>
+          </div>
+          <div>
+            <dt>Ставка</dt>
+            <dd data-loan-rate>0,65% в день</dd>
+          </div>
+          <div>
+            <dt data-loan-contract-amount-label>Без акции к возврату</dt>
+            <dd data-loan-contract-amount>—</dd>
+          </div>
+          <div>
+            <dt>Карта получения</dt>
+            <dd data-loan-card>—</dd>
+          </div>
+          <div>
+            <dt>Номер договора</dt>
+            <dd data-loan-contract>—</dd>
+          </div>
+          <div>
+            <dt>Дата оформления</dt>
+            <dd data-loan-issued>—</dd>
+          </div>
+          <div>
+            <dt>Договор</dt>
+            <dd>
+              <a data-loan-document href="assets/docs/first-loan-terms.pdf" target="_blank" rel="noopener">
+                Открыть
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="loan-account-card">
+        <h2>История операций</h2>
+        <ul class="loan-account-operations" data-loan-operations></ul>
+      </section>
+
+      <section class="loan-account-dev" data-loan-dev-tools hidden>
+        <h2>Режим разработки</h2>
+        <p>
+          Эти действия имитируют серверные события и не войдут
+          в пользовательскую версию.
+        </p>
+        <button type="button" data-simulate-overdue>
+          Имитировать просрочку
+        </button>
+      </section>
+    </div>
+
+    <dialog class="loan-repay-dialog" data-repay-dialog>
+      <form method="dialog" class="loan-repay-dialog__content">
+        <h2>Погашение займа</h2>
+        <p class="loan-repay-dialog__text">
+          Деньги будут списаны с привязанной карты.
+        </p>
+
+        <dl class="loan-repay-dialog__summary">
+          <div>
+            <dt>Сумма платежа</dt>
+            <dd data-repay-amount>—</dd>
+          </div>
+          <div>
+            <dt>Карта</dt>
+            <dd data-repay-card>—</dd>
+          </div>
+        </dl>
+
+        <p class="loan-repay-dialog__note">
+          В режиме разработки платеж будет выполнен через mock-обработчик.
+        </p>
+
+        <div class="loan-repay-dialog__actions">
+          <button type="submit" value="cancel">Отмена</button>
+          <button type="button" data-confirm-repayment>
+            Погасить
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="loan-extension-dialog" data-extension-dialog>
+      <div class="loan-extension-dialog__content">
+        <section data-extension-settings>
+          <h2>Продление срока займа</h2>
+          <p class="loan-extension-dialog__text">
+            Можно добавить до 30 дней. Доступно не более пяти продлений.
+          </p>
+
+          <div class="loan-extension-days">
+            <div>
+              <span>Продлить на</span>
+              <output data-extension-days-output>7 дней</output>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="30"
+              step="1"
+              value="7"
+              aria-label="Количество дней продления"
+              data-extension-days
+            >
+            <div class="loan-extension-days__limits">
+              <span>1 день</span>
+              <span>30 дней</span>
+            </div>
+          </div>
+
+          <dl class="loan-extension-dialog__summary">
+            <div>
+              <dt>Проценты к оплате</dt>
+              <dd data-extension-interest>—</dd>
+            </div>
+            <div>
+              <dt>Новая дата возврата</dt>
+              <dd data-extension-due-date>—</dd>
+            </div>
+            <div>
+              <dt>Продление</dt>
+              <dd data-extension-count>—</dd>
+            </div>
+          </dl>
+
+          <p class="loan-extension-dialog__agreement">
+            При продлении акция 0% прекращается. Продолжая, вы
+            соглашаетесь с
+            <a
+              href="assets/docs/loan-extension-terms.pdf"
+              target="_blank"
+              rel="noopener"
+            >дополнительным соглашением</a>.
+          </p>
+
+          <div class="loan-extension-dialog__actions">
+            <button type="button" data-cancel-extension>Отмена</button>
+            <button type="button" data-start-extension>
+              Перейти к оплате
+            </button>
+          </div>
+        </section>
+
+        <section data-extension-payment hidden>
+          <h2>Оплата процентов</h2>
+          <p class="loan-extension-dialog__text">
+            После успешной оплаты мы отправим СМС-код для подписания
+            дополнительного соглашения.
+          </p>
+
+          <dl class="loan-extension-dialog__summary">
+            <div>
+              <dt>К оплате</dt>
+              <dd data-extension-payment-amount>—</dd>
+            </div>
+            <div>
+              <dt>Карта</dt>
+              <dd data-extension-payment-card>—</dd>
+            </div>
+          </dl>
+
+          <p class="loan-extension-dialog__agreement">
+            В режиме разработки платеж выполняется через mock-обработчик.
+          </p>
+
+          <div class="loan-extension-dialog__actions">
+            <button type="button" data-back-extension-payment>Назад</button>
+            <button type="button" data-confirm-extension-payment>
+              Оплатить проценты
+            </button>
+          </div>
+        </section>
+
+        <section data-extension-sms hidden>
+          <h2>Подтвердите продление</h2>
+          <p class="loan-extension-dialog__text">
+            Код подтверждает подписание дополнительного соглашения
+            простой электронной подписью. Mock-код: <strong>111111</strong>.
+          </p>
+
+          <label class="loan-extension-code" for="extension-code">
+            <span>Код из СМС</span>
+            <input
+              id="extension-code"
+              type="text"
+              inputmode="numeric"
+              maxlength="6"
+              autocomplete="one-time-code"
+              data-extension-code
+            >
+          </label>
+
+          <p class="loan-extension-code__error" data-extension-code-error hidden>
+            Неверный код. Для проверки введите 111111.
+          </p>
+
+          <div class="loan-extension-dialog__actions">
+            <button type="button" data-back-extension>Закрыть</button>
+            <button type="button" data-confirm-extension>
+              Подписать и продлить
+            </button>
+          </div>
+        </section>
+      </div>
+    </dialog>
+
+    <section class="loan-account-error" data-loan-error hidden>
+      <h1>Займ не найден</h1>
+      <p>Возможно, ссылка устарела или займ принадлежит другому пользователю.</p>
+      <a href="dashboard.html">Вернуться в личный кабинет</a>
+    </section>
+  </main>
+
+  <script src="assets/js/loan-account.js" defer></script>
+</body>
+</html>

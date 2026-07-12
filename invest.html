@@ -16,7 +16,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- Основные стили -->
+  <link rel="stylesheet" href="assets/css/style.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   
@@ -29,7 +29,7 @@
     <div class="container_header">
       <div class="header_logo">
         <a href="/" class="logo">
-        <img src="assets/svg/logo.svg" alt="logo" width="44px" height="44px" loading="eager">
+        <img src="assets/svg/logo.svg" alt="logo" width="44" height="44" loading="eager">
         </a>
       </div>
 
@@ -51,8 +51,6 @@
   </nav>
   <div class="menu-overlay"></div>
 
-  <!-- Основное содержимое
-   "Commissioner","Segoe UI","Gerbera",Helvetica,Arial,sans-serif -->
   <main class="main">
     <section class="hero" id="invest">
         <div class="hero_container">
@@ -69,7 +67,7 @@
             <div class="calculator-row calculator-row--title">
             <span class="deposit-title">Калькулятор сбережений</span>
             </div>
-              <!-- Срок -->
+            
             <div class="calculator-row calculator-row--top">
               <span class="calculator-label">Срок вклада</span>
               <span class="calculator-value" id="dep-term">6 месяцев</span>
@@ -83,7 +81,6 @@
               </div>
             </div>
 
-            <!-- Сумма -->
             <div class="dep-amount-control">
               <label class="dep-amount-label" for="dep-amount-input">Сумма вклада</label>
 
@@ -114,7 +111,6 @@
               </div>
             </div>
 
-            <!-- Результаты -->
             <div class="dep-results">
               <div class="dep-results__rate">
                 <span class="dep-results__rate-label">Ставка</span>
@@ -224,12 +220,6 @@
         </div>
     </section>
 
-    <!--<section class="topup-banner" aria-label="Пополнение счета">
-      <div class="topup-banner__inner">
-        <img src="assets/img/atm.png" alt="Пополнение счета через банкомат" loading="lazy">
-      </div>
-    </section>-->
-
     <section class="topup-steps">
       <div class="glass-block topup-steps__panel">
         <h2 class="section-title">Пополняйте как удобно</h2>
@@ -298,7 +288,7 @@
                 <span class="faq-chevron" aria-hidden="true"></span>
               </summary>
               <div class="faq-a">
-                <p>Если вы открыли сберегательный счет и пополнили его на минимальную сумму, то процентная ставка фиксируется на весь срок.<br>В случае досрочного снятия денежных средств доходность будет рассчитана в размере 0,01% годовых.</p>
+                <p>Если вы открыли сберегательный счет и пополнили его на минимальную сумму, то процентная ставка фиксируется на весь срок.<br>При досрочном закрытии счета начисленные проценты не выплачиваются.</p>
               </div>
             </details>
 
@@ -318,7 +308,7 @@
                 <span class="faq-chevron" aria-hidden="true"></span>
               </summary>
               <div class="faq-a">
-                <p>Минимальная сумма - 30 000 руб.</p>
+                <p>Минимальная сумма - 50 000 руб.</p>
               </div>
             </details>
 
@@ -337,10 +327,8 @@
     </section>
   </main>
 
-  <!-- Подвал сайта -->
   <footer class="footer" id="contacts">
       <div class="footer-grid">
-        <!--<p class="footer-note">*Новым клиентам: до&nbsp;30&nbsp;000&nbsp;₽ на&nbsp;срок до&nbsp;30&nbsp;дней (ПСК 0—292%) под&nbsp;0% при условии возврата в&nbsp;срок</p>-->
         <ul class="footer-links">
           <li><a href="about.html">О компании</a></li>
           <li><a href="docs.html">Документы</a></li>
@@ -348,9 +336,9 @@
           <li><a href="index.html">Займы</a></li>
         </ul>
         <ul class="footer-social" aria-label="Социальные сети">
-          <li><a href="#" aria-label="Telegram" class="social-btn"><img src="assets/svg/tg.svg" alt="open-telegram" loading="eager" width="30px" height="30px"></a></li>
-          <li><a href="#" aria-label="MAX" class="social-btn"><img src="assets/svg/max.svg" alt="open-max" loading="eager" width="30px" height="30px"></a></li>
-          <li><a href="#" aria-label="WhatsApp" class="social-btn"><img src="assets/svg/w.svg" alt="open-whatsapp" loading="eager" width="30px" height="30px"></a></li>
+          <li><a href="#" aria-label="Telegram" class="social-btn"><img src="assets/svg/tg.svg" alt="open-telegram" loading="eager" width="30" height="30"></a></li>
+          <li><a href="#" aria-label="MAX" class="social-btn"><img src="assets/svg/max.svg" alt="open-max" loading="eager" width="30" height="30"></a></li>
+          <li><a href="#" aria-label="WhatsApp" class="social-btn"><img src="assets/svg/w.svg" alt="open-whatsapp" loading="eager" width="30" height="30"></a></li>
         </ul>
         <p class="footer-info">Связаться со Службой поддержки можно круглосуточно с помощью официальных чатов в Telegram, Max, WhatsApp или по электронной почте support@domain.com</p>
         <p class="footer-info">Рег. номер записи в реестре КПК:<br>00000000 от XX.XX.2026</p>
@@ -361,14 +349,9 @@
         <div class="footer-end"><p class="footer-info">КПК "Р-Финанс", 2026</p></div>
       </div>
   </footer>
-  <div class="sheet-overlay" data-sheet-overlay aria-hidden="true"></div>
 
-  <!-- Скрипты -->
   <script src="assets/js/savings-calculator.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   
-  <script>
-    // Здесь может быть код Яндекс.Метрики или Google Analytics
-  </script>
 </body>
 </html>

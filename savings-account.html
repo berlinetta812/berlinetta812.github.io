@@ -58,8 +58,8 @@
         data-closure-status
         hidden
       >
-        <h2>Заявка на закрытие принята</h2>
-        <p>
+        <h2 data-closure-title>Заявка на закрытие принята</h2>
+        <p data-closure-message>
           После обработки заявки деньги будут возвращены на карту, с которой ранее был пополнен счет.
         </p>
         <dl class="savings-closure-status__details">
@@ -72,6 +72,14 @@
             <dd data-closure-requested>—</dd>
           </div>
         </dl>
+        <button
+          class="savings-closure-status__retry"
+          type="button"
+          data-retry-closure-payout
+          hidden
+        >
+          Повторить заявку
+        </button>
       </section>
 
       <section
@@ -101,6 +109,28 @@
           Получить деньги
         </button>
         <a href="products.html">Открыть новый счет</a>
+      </section>
+
+      <section
+        class="savings-closed-status"
+        data-closed-status
+        hidden
+      >
+        <h2>Счет закрыт</h2>
+        <dl class="savings-closed-status__details">
+          <div>
+            <dt>Дата закрытия</dt>
+            <dd data-account-closed>—</dd>
+          </div>
+          <div>
+            <dt>Выплачено</dt>
+            <dd data-account-returned>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Причина</dt>
+            <dd data-account-close-reason>—</dd>
+          </div>
+        </dl>
       </section>
 
       <section class="savings-account-card">
@@ -235,8 +265,14 @@
         <button type="button" data-process-closure hidden>
           Имитировать обработку досрочного закрытия
         </button>
+        <button type="button" data-fail-closure-payout hidden>
+          Имитировать ошибку возврата
+        </button>
         <button type="button" data-process-maturity-payout hidden>
           Имитировать выплату
+        </button>
+        <button type="button" data-fail-maturity-payout hidden>
+          Имитировать ошибку выплаты
         </button>
       </section>
     </div>

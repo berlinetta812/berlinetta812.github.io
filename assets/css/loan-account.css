@@ -1,0 +1,515 @@
+.loan-account-main {
+  max-width: 528px;
+  margin: 0 auto;
+  padding: 24px 16px calc(80px + env(safe-area-inset-bottom));
+}
+
+.loan-account-back {
+  display: inline-flex;
+  margin-bottom: 22px;
+  color: rgba(17, 17, 17, 0.62);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.loan-account-content {
+  display: grid;
+  gap: 18px;
+}
+
+.loan-account-hero {
+  padding: 24px;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 95% 5%, rgba(57, 59, 244, 0.11), transparent 42%),
+    linear-gradient(145deg, #fff, #eceef2);
+  box-shadow: 0 12px 30px rgba(17, 17, 17, 0.07);
+}
+
+.loan-account-hero__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.loan-account-hero__type {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.loan-account-status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: rgb(41, 43, 176);
+  background: rgb(228, 230, 255);
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+.loan-account-status.is-overdue {
+  color: rgb(164, 35, 38);
+  background: rgb(255, 229, 230);
+}
+
+.loan-account-hero h1 {
+  margin-top: 15px;
+  font-size: clamp(2.3rem, 12vw, 3.25rem);
+  line-height: 1;
+}
+
+.loan-account-hero__caption {
+  margin-top: 8px;
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.78rem;
+}
+
+.loan-account-hero__summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.loan-account-hero__summary div {
+  padding: 14px;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.loan-account-hero__summary dt,
+.loan-account-details dt {
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.72rem;
+}
+
+.loan-account-hero__summary dd {
+  margin-top: 6px;
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.loan-account-promo,
+.loan-account-card {
+  padding: 22px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.05);
+}
+
+.loan-account-promo {
+  border-left: 4px solid rgb(57, 59, 244);
+}
+
+.loan-account-promo.is-overdue {
+  border-left-color: rgb(214, 48, 49);
+  background: rgb(255, 246, 246);
+}
+
+.loan-account-promo h2,
+.loan-account-card h2 {
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.loan-account-promo p {
+  margin-top: 8px;
+  color: rgba(17, 17, 17, 0.56);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.loan-account-repay {
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-radius: 20px;
+  color: #fff;
+  background: rgb(57, 59, 244);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.loan-account-extend {
+  width: 100%;
+  min-height: 56px;
+  border: 1px solid rgba(57, 59, 244, 0.22);
+  border-radius: 20px;
+  color: rgb(57, 59, 244);
+  background: #fff;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.loan-account-details {
+  margin-top: 14px;
+}
+
+.loan-account-details div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+}
+
+.loan-account-details div + div {
+  border-top: 1px solid rgba(17, 17, 17, 0.07);
+}
+
+.loan-account-details dd {
+  max-width: 58%;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.loan-account-details a {
+  color: rgb(57, 59, 244);
+  text-decoration: none;
+}
+
+.loan-account-operations {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.loan-account-operation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 16px;
+  padding: 14px 0;
+}
+
+.loan-account-operation + .loan-account-operation {
+  border-top: 1px solid rgba(17, 17, 17, 0.07);
+}
+
+.loan-account-operation strong {
+  font-size: 0.84rem;
+}
+
+.loan-account-operation time {
+  grid-column: 1;
+  color: rgba(17, 17, 17, 0.48);
+  font-size: 0.72rem;
+}
+
+.loan-account-operation span {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.loan-account-error {
+  padding: 28px 22px;
+  border-radius: 24px;
+  background: #fff;
+  text-align: center;
+}
+
+.loan-account-error p {
+  margin: 10px 0 18px;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.loan-account-error a {
+  color: rgb(57, 59, 244);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.loan-account-dev {
+  padding: 18px;
+  border: 1px dashed rgba(17, 17, 17, 0.2);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.loan-account-dev h2 {
+  font-size: 0.9rem;
+}
+
+.loan-account-dev p {
+  margin-top: 7px;
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.loan-account-dev button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 14px;
+  color: rgb(164, 35, 38);
+  background: rgb(255, 229, 230);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.loan-repay-dialog {
+  width: min(100% - 32px, 480px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(17, 17, 17, 0.24);
+}
+
+.loan-repay-dialog::backdrop {
+  background: rgba(17, 17, 17, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.loan-repay-dialog__content {
+  padding: 24px;
+}
+
+.loan-repay-dialog h2 {
+  font-size: 1.2rem;
+}
+
+.loan-repay-dialog__text,
+.loan-repay-dialog__note {
+  margin-top: 9px;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.loan-repay-dialog__summary {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.loan-repay-dialog__summary div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgb(246, 246, 247);
+}
+
+.loan-repay-dialog__summary dt {
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.76rem;
+}
+
+.loan-repay-dialog__summary dd {
+  text-align: right;
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.loan-repay-dialog__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.loan-repay-dialog__actions button {
+  min-height: 52px;
+  border: 0;
+  border-radius: 16px;
+  color: #111;
+  background: rgb(235, 235, 238);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.loan-repay-dialog__actions [data-confirm-repayment] {
+  color: #fff;
+  background: rgb(57, 59, 244);
+}
+
+.loan-repay-dialog__actions [data-confirm-repayment]:disabled {
+  opacity: 0.58;
+  cursor: wait;
+}
+
+.loan-extension-dialog {
+  width: min(100% - 32px, 480px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(17, 17, 17, 0.24);
+}
+
+.loan-extension-dialog::backdrop {
+  background: rgba(17, 17, 17, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.loan-extension-dialog__content {
+  padding: 24px;
+}
+
+.loan-extension-dialog h2 {
+  font-size: 1.2rem;
+}
+
+.loan-extension-dialog__text {
+  margin-top: 9px;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.loan-extension-days {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgb(246, 246, 247);
+}
+
+.loan-extension-days > div:first-child,
+.loan-extension-days__limits {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.loan-extension-days > div:first-child span {
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.76rem;
+}
+
+.loan-extension-days output {
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.loan-extension-days input {
+  width: 100%;
+  margin: 18px 0 10px;
+  accent-color: rgb(57, 59, 244);
+}
+
+.loan-extension-days__limits {
+  color: rgba(17, 17, 17, 0.42);
+  font-size: 0.68rem;
+}
+
+.loan-extension-dialog__summary {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.loan-extension-dialog__summary div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgb(246, 246, 247);
+}
+
+.loan-extension-dialog__summary dt {
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.74rem;
+}
+
+.loan-extension-dialog__summary dd {
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+.loan-extension-dialog__agreement {
+  margin-top: 16px;
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.loan-extension-dialog__agreement a {
+  color: rgb(57, 59, 244);
+}
+
+.loan-extension-dialog__actions {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.loan-extension-dialog__actions button {
+  min-height: 52px;
+  border: 0;
+  border-radius: 16px;
+  color: #111;
+  background: rgb(235, 235, 238);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.loan-extension-dialog__actions button:last-child {
+  color: #fff;
+  background: rgb(57, 59, 244);
+}
+
+.loan-extension-code {
+  display: block;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid rgba(17, 17, 17, 0.18);
+  border-radius: 16px;
+}
+
+.loan-extension-code span {
+  display: block;
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 0.7rem;
+}
+
+.loan-extension-code input {
+  width: 100%;
+  margin-top: 5px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+}
+
+.loan-extension-code__error {
+  margin-top: 9px;
+  color: rgb(214, 48, 49);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 390px) {
+  .loan-account-hero__summary {
+    grid-template-columns: 1fr;
+  }
+}
