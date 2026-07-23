@@ -37,15 +37,17 @@
         <h1 data-account-title>Сберегательный счет</h1>
         <p class="savings-account-hero__balance" data-account-balance>0 ₽</p>
         <div class="savings-account-hero__meta">
-          <p data-account-fixed-rate hidden>Ставка 30% годовых</p>
+          <p data-account-fixed-rate hidden>Ставка 28% годовых</p>
           <p data-account-term>На 12 месяцев</p>
         </div>
       </section>
 
       <section class="savings-funding-card" data-funding-card>
         <h2>
-          Пополните счет, чтобы зафиксировать ставку
-          <span data-account-rate>30%</span>
+          <span data-funding-title>
+            Пополните счет, чтобы зафиксировать ставку
+          </span>
+          <span data-account-rate>28%</span>
         </h2>
         <p>
           Пока на счете нет денег, предварительная ставка может измениться.
@@ -105,10 +107,20 @@
             <dd data-maturity-total>0 ₽</dd>
           </div>
         </dl>
-        <button type="button" data-request-maturity-payout>
+        <button
+          class="savings-maturity-action savings-maturity-action--primary"
+          type="button"
+          data-renew-savings
+        >
+          Пролонгировать договор
+        </button>
+        <button
+          class="savings-maturity-action savings-maturity-action--secondary"
+          type="button"
+          data-request-maturity-payout
+        >
           Получить деньги
         </button>
-        <a href="products.html">Открыть новый счет</a>
       </section>
 
       <section
@@ -136,10 +148,6 @@
       <section class="savings-account-card">
         <h2>Реквизиты</h2>
         <dl class="savings-account-details">
-          <div>
-            <dt>Номер счета</dt>
-            <dd data-account-number>—</dd>
-          </div>
           <div>
             <dt>Номер договора</dt>
             <dd data-contract-number>—</dd>
@@ -232,6 +240,7 @@
                 <option value="deposit">Поступления</option>
                 <option value="withdrawal">Расходы</option>
                 <option value="interest">Проценты</option>
+                <option value="renewal">Пролонгации</option>
               </select>
             </label>
 
@@ -302,6 +311,161 @@
             class="savings-close-dialog__confirm"
             type="button"
             data-confirm-close
+          >
+            Подать заявку
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="savings-action-dialog" data-funding-dialog>
+      <form method="dialog" class="savings-action-dialog__content">
+        <h2>Подтвердите условия пополнения</h2>
+        <p class="savings-action-dialog__description">
+          После пополнения ставка и срок будут зафиксированы.
+        </p>
+
+        <dl class="savings-action-dialog__summary">
+          <div>
+            <dt>Сумма пополнения</dt>
+            <dd data-funding-dialog-amount>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Срок</dt>
+            <dd data-funding-dialog-term>—</dd>
+          </div>
+          <div>
+            <dt>Ставка</dt>
+            <dd data-funding-dialog-rate>0% годовых</dd>
+          </div>
+          <div>
+            <dt>Дата окончания</dt>
+            <dd data-funding-dialog-maturity>—</dd>
+          </div>
+          <div>
+            <dt>Прогноз к получению</dt>
+            <dd data-funding-dialog-total>0 ₽</dd>
+          </div>
+        </dl>
+
+        <label class="savings-action-dialog__consent">
+          <input type="checkbox" data-funding-dialog-consent>
+          <span>
+            Подтверждаю окончательные условия и соглашаюсь с
+            <a
+              href="assets/docs/individual-terms.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              индивидуальными условиями
+            </a>
+          </span>
+        </label>
+
+        <div class="savings-action-dialog__actions">
+          <button type="submit" value="cancel">Отмена</button>
+          <button
+            class="savings-action-dialog__confirm"
+            type="button"
+            data-confirm-funding
+            disabled
+          >
+            Пополнить счет
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="savings-action-dialog" data-renewal-dialog>
+      <form method="dialog" class="savings-action-dialog__content">
+        <h2>Условия пролонгации</h2>
+        <p class="savings-action-dialog__description">
+          Вся сумма продолжит работать по актуальной ставке.
+        </p>
+
+        <dl class="savings-action-dialog__summary">
+          <div>
+            <dt>Сумма</dt>
+            <dd data-renewal-dialog-amount>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Срок</dt>
+            <dd data-renewal-dialog-term>—</dd>
+          </div>
+          <div>
+            <dt>Новая ставка</dt>
+            <dd data-renewal-dialog-rate>0% годовых</dd>
+          </div>
+          <div>
+            <dt>Новая дата окончания</dt>
+            <dd data-renewal-dialog-maturity>—</dd>
+          </div>
+          <div>
+            <dt>Прогноз к получению</dt>
+            <dd data-renewal-dialog-total>0 ₽</dd>
+          </div>
+        </dl>
+
+        <label class="savings-action-dialog__consent">
+          <input type="checkbox" data-renewal-dialog-consent>
+          <span>
+            Подтверждаю новые условия и соглашаюсь с
+            <a
+              href="assets/docs/individual-terms.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              индивидуальными условиями
+            </a>
+          </span>
+        </label>
+
+        <div class="savings-action-dialog__actions">
+          <button type="submit" value="cancel">Отмена</button>
+          <button
+            class="savings-action-dialog__confirm"
+            type="button"
+            data-confirm-renewal
+            disabled
+          >
+            Пролонгировать
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="savings-action-dialog" data-payout-dialog>
+      <form method="dialog" class="savings-action-dialog__content">
+        <h2>Получение денег</h2>
+        <p class="savings-action-dialog__description">
+          После обработки заявки вся сумма будет отправлена на карту.
+        </p>
+
+        <dl class="savings-action-dialog__summary">
+          <div>
+            <dt>Сумма выплаты</dt>
+            <dd data-payout-dialog-amount>0 ₽</dd>
+          </div>
+          <div>
+            <dt>Карта</dt>
+            <dd data-payout-dialog-card>—</dd>
+          </div>
+          <div>
+            <dt>Срок обработки</dt>
+            <dd data-payout-dialog-time>До 7 рабочих дней</dd>
+          </div>
+        </dl>
+
+        <p class="savings-action-dialog__support">
+          Если данные указаны некорректно, обратитесь в техническую поддержку.
+        </p>
+
+        <div class="savings-action-dialog__actions">
+          <button type="submit" value="cancel">Отмена</button>
+          <button
+            class="savings-action-dialog__confirm"
+            type="button"
+            data-confirm-maturity-payout
           >
             Подать заявку
           </button>

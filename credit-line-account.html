@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Кредитная линия | Р-Финанс</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/credit-line.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img src="assets/svg/logo.svg" alt="Р-Финанс" width="44" height="44">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main credit-line-main">
+    <a href="dashboard.html" class="savings-back">‹ Назад</a>
+
+    <div class="credit-account-content" data-credit-account-content hidden>
+      <section class="credit-account-hero">
+        <div class="credit-account-hero__top">
+          <p>Кредитный лимит</p>
+          <span data-credit-status>Активен</span>
+        </div>
+        <h1 data-credit-balance>5 000 ₽</h1>
+        <p class="credit-account-hero__caption">Остаток основного долга</p>
+        <dl data-credit-availability>
+          <div>
+            <dt>Доступно по линии</dt>
+            <dd data-credit-available>5 000 ₽ / 10 000 ₽</dd>
+          </div>
+        </dl>
+      </section>
+
+      <a
+        href="credit-line.html"
+        class="credit-add-drawdown"
+        data-credit-add-drawdown
+        hidden
+      >
+        Получить деньги
+      </a>
+
+      <section class="credit-payment-card" data-credit-payment-card>
+        <p>Ближайший платеж</p>
+        <div>
+          <strong data-credit-next-payment>2 500 ₽</strong>
+          <time data-credit-next-date>—</time>
+        </div>
+        <button type="button" data-credit-pay>
+          Оплатить платеж
+        </button>
+        <p
+          class="credit-payment-error"
+          data-credit-payment-error
+          role="alert"
+          hidden
+        >
+          Не удалось провести платеж. Попробуйте еще раз.
+        </p>
+      </section>
+
+      <section class="credit-promo-card" data-credit-promo-card>
+        <h2>Проценты спишем полностью</h2>
+        <p>
+          Для ставки 0% оплачивайте каждый платеж не позднее
+          указанной даты.
+        </p>
+      </section>
+
+      <section class="credit-account-card">
+        <h2>График платежей</h2>
+        <ul
+          class="credit-schedule"
+          id="credit-schedule-list"
+          data-credit-schedule
+        ></ul>
+        <button
+          class="credit-schedule-toggle"
+          type="button"
+          aria-controls="credit-schedule-list"
+          aria-expanded="false"
+          data-credit-schedule-toggle
+          hidden
+        >
+          Весь график
+        </button>
+      </section>
+
+      <section class="credit-account-card">
+        <h2>Детали кредитной линии</h2>
+        <dl class="credit-account-details">
+          <div>
+            <dt>Номер договора</dt>
+            <dd data-credit-contract>—</dd>
+          </div>
+          <div>
+            <dt>Срок договора</dt>
+            <dd>5 лет</dd>
+          </div>
+          <div>
+            <dt>Карта получения</dt>
+            <dd data-credit-card>—</dd>
+          </div>
+          <div>
+            <dt>Договор</dt>
+            <dd>
+              <a
+                class="credit-contract-download"
+                data-credit-document
+                href="assets/docs/credit-line-terms.pdf"
+                download
+              >
+                <span>Скачать договор</span>
+                <img
+                  src="assets/svg/download.svg"
+                  alt=""
+                  width="22"
+                  height="22"
+                  aria-hidden="true"
+                >
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="credit-account-card">
+        <h2>История операций</h2>
+        <ul
+          class="credit-operations"
+          id="credit-operations-list"
+          data-credit-operations
+        ></ul>
+        <button
+          class="credit-operations-toggle"
+          type="button"
+          aria-controls="credit-operations-list"
+          aria-expanded="false"
+          data-credit-operations-toggle
+          hidden
+        >
+          Все операции
+        </button>
+      </section>
+
+      <button
+        class="credit-early-repayment"
+        type="button"
+        data-credit-early-repay
+      >
+        Погасить задолженность досрочно
+      </button>
+      <p
+        class="credit-payment-error credit-payment-error--early"
+        data-credit-early-error
+        role="alert"
+        hidden
+      >
+        Не удалось провести платеж. Попробуйте еще раз.
+      </p>
+
+      <section class="credit-account-dev-tools" aria-label="Инструменты разработки">
+        <p>DEV</p>
+        <div>
+          <button type="button" data-credit-simulate-due>
+            Имитация наступления срока
+          </button>
+          <button type="button" data-credit-simulate-overdue>
+            Имитация просрочки
+          </button>
+          <button type="button" data-credit-simulate-payment-error>
+            Следующая оплата: ошибка
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <section class="credit-account-error" data-credit-account-error hidden>
+      <h1>Кредитная линия не найдена</h1>
+      <p>Вернитесь в личный кабинет и повторите попытку.</p>
+      <a href="dashboard.html" class="savings-submit">В личный кабинет</a>
+    </section>
+  </main>
+
+  <script src="assets/js/credit-line-calculator.js" defer></script>
+  <script src="assets/js/credit-line-account.js" defer></script>
+</body>
+</html>

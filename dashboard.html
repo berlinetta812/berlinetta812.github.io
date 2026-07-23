@@ -114,13 +114,27 @@
       <div class="dashboard-product-group">
         <h3 class="dashboard-subtitle">Займы</h3>
 
-        <a class="dashboard-product-card is-locked" data-loan-card aria-disabled="true">
+        <a
+          class="dashboard-product-card is-locked"
+          data-credit-line-card
+          aria-disabled="true"
+        >
           <div>
-            <p class="dashboard-product-card__title" data-loan-title>Активных займов нет</p>
-            <p class="dashboard-product-card__text" data-loan-text>Доступно до 10 000 ₽</p>
+            <p
+              class="dashboard-product-card__title"
+              data-credit-line-title
+            >
+              Кредитная линия
+            </p>
+            <p
+              class="dashboard-product-card__text"
+              data-credit-line-text
+            >
+              Доступно до 50 000 ₽
+            </p>
             <span
               class="dashboard-product-card__badge"
-              data-loan-verification-badge
+              data-credit-line-badge
             >
               Нужна верификация
             </span>
@@ -192,16 +206,17 @@
       </a>
     </section>
 
-    <section class="dashboard-loan-dev" data-loan-dev-tools hidden>
-      <h2>Режим разработки</h2>
-      <p>
-        Сброс удалит только mock-историю первого займа текущего
-        пользователя и позволит пройти сценарий заново.
-      </p>
-      <button type="button" data-reset-first-loan>
-        Повторить тест первого займа
+    <section class="dashboard-dev-tools" aria-label="Инструменты разработки">
+      <p class="dashboard-dev-tools__label">DEV</p>
+      <button
+        class="dashboard-dev-tools__reset"
+        type="button"
+        data-reset-credit-line
+      >
+        Сбросить займ пользователя
       </button>
     </section>
+
   </main>
 
   <script src="assets/js/savings-calculator.js" defer></script>

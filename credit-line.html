@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+
+  <title data-credit-page-title>Первый займ | Р-Финанс</title>
+
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/credit-line.css">
+</head>
+
+<body class="dashboard-body">
+  <header class="header">
+    <div class="container_header">
+      <div class="header_logo">
+        <a href="dashboard.html" class="logo" aria-label="В личный кабинет">
+          <img src="assets/svg/logo.svg" alt="Р-Финанс" width="44" height="44">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main credit-line-main">
+    <a href="dashboard.html" class="savings-back">‹ Назад</a>
+
+    <form class="credit-line-form" data-credit-line-form>
+      <section class="credit-line-intro">
+        <span data-credit-audience>Доступно новым клиентам</span>
+        <h1 data-credit-heading>Первый займ</h1>
+        <p data-credit-description>
+          Платите по графику каждые 2 недели, и начисленные
+          проценты будут списаны полностью.
+        </p>
+      </section>
+
+      <section class="credit-line-panel">
+        <label for="credit-amount" data-credit-amount-label>
+          Сумма займа, ₽
+        </label>
+        <input
+          id="credit-amount"
+          class="credit-line-amount"
+          type="text"
+          inputmode="numeric"
+          value="5 000"
+          autocomplete="off"
+          data-credit-amount
+        >
+        <input
+          class="savings-range"
+          type="range"
+          min="2000"
+          max="10000"
+          step="100"
+          value="5000"
+          aria-label="Сумма займа"
+          data-credit-amount-range
+        >
+        <div class="savings-range-limits">
+          <span data-credit-amount-min>2 000 ₽</span>
+          <span data-credit-amount-max>10 000 ₽</span>
+        </div>
+      </section>
+
+      <section class="credit-line-panel">
+        <div class="credit-line-field-heading">
+          <label for="credit-term">Срок займа</label>
+          <output for="credit-term" data-credit-term-output>
+            4 недели
+          </output>
+        </div>
+        <input
+          id="credit-term"
+          class="savings-range"
+          type="range"
+          min="2"
+          max="4"
+          step="2"
+          value="4"
+          aria-label="Срок займа"
+          data-credit-term
+        >
+        <div class="savings-range-limits">
+          <span data-credit-term-min>2 недели</span>
+          <span data-credit-term-max>4 недели</span>
+        </div>
+      </section>
+
+      <section class="credit-line-summary">
+        <h2>Расчет платежей</h2>
+        <dl>
+          <div>
+            <dt>Платежи</dt>
+            <dd data-credit-payment-count>2 платежа</dd>
+          </div>
+          <div>
+            <dt>Максимальный платеж раз в 2 недели</dt>
+            <dd data-credit-max-payment>2 500 ₽</dd>
+          </div>
+          <div>
+            <dt>Последний платеж</dt>
+            <dd data-credit-last-payment>2 500 ₽</dd>
+          </div>
+        </dl>
+        <p data-credit-promo-note>
+          Акция действует только при своевременной оплате каждого платежа.
+        </p>
+        <div class="credit-preview-schedule">
+          <h3>График платежей</h3>
+          <p data-credit-schedule-caption>
+            Платежи по оформляемому займу
+          </p>
+          <ul data-credit-preview-schedule></ul>
+          <button
+            type="button"
+            data-credit-preview-toggle
+            hidden
+            aria-expanded="false"
+          >
+            Весь график
+          </button>
+        </div>
+      </section>
+
+      <section class="credit-line-panel credit-line-card-panel">
+        <div>
+          <h2>Карта для получения денег</h2>
+          <p data-credit-card-text>Карта пока не привязана</p>
+        </div>
+        <button type="button" data-credit-bind-card>
+          Привязать
+        </button>
+      </section>
+
+      <section class="credit-line-card-editor" data-credit-card-editor hidden>
+        <label for="credit-card-last-four">
+          Последние четыре цифры mock-карты
+        </label>
+        <input
+          id="credit-card-last-four"
+          type="text"
+          inputmode="numeric"
+          autocomplete="off"
+          maxlength="4"
+          placeholder="4242"
+          data-credit-card-last-four
+        >
+        <p data-credit-card-error hidden>Введите четыре цифры</p>
+        <div>
+          <button type="button" data-credit-save-card>Сохранить</button>
+          <button type="button" data-credit-cancel-card>Отмена</button>
+        </div>
+      </section>
+
+      <section class="credit-line-conditions">
+        <h2>Основные условия</h2>
+        <ul data-credit-conditions>
+          <li>Первый лимит — до 10 000 ₽</li>
+          <li>Погашение каждые 14 дней</li>
+          <li>Платежи вносятся по утвержденному графику</li>
+        </ul>
+      </section>
+
+      <label class="savings-consent">
+        <input type="checkbox" data-credit-consent>
+        <span>
+          <span data-credit-consent-copy>Я соглашаюсь с</span>
+          <a href="assets/docs/credit-line-terms.pdf" target="_blank" rel="noopener">
+            <span data-credit-consent-link>
+              индивидуальными условиями и договором кредитной линии
+            </span>
+          </a>
+        </span>
+      </label>
+
+      <button
+        class="savings-submit"
+        type="submit"
+        disabled
+        data-credit-submit
+      >
+        <span data-credit-submit-copy>Получить деньги</span>
+      </button>
+    </form>
+
+    <section class="credit-line-sms" data-credit-sms hidden>
+      <h1 data-credit-sms-heading>
+        Подтвердите согласие с условиями договора
+      </h1>
+      <p>
+        Введите mock-код из SMS. Для тестирования используйте
+        <strong>111111</strong>.
+      </p>
+      <label for="credit-code">Код из SMS</label>
+      <input
+        id="credit-code"
+        type="password"
+        inputmode="numeric"
+        autocomplete="one-time-code"
+        maxlength="6"
+        data-credit-code
+      >
+      <p class="credit-line-error" data-credit-code-error hidden>
+        Неверный код подтверждения
+      </p>
+      <button class="savings-submit" type="button" data-credit-confirm>
+        Подтвердить и получить деньги
+      </button>
+      <button class="credit-line-secondary" type="button" data-credit-edit>
+        Вернуться к условиям
+      </button>
+    </section>
+  </main>
+
+  <script src="assets/js/credit-line-calculator.js" defer></script>
+  <script src="assets/js/credit-line-flow.js" defer></script>
+</body>
+</html>
